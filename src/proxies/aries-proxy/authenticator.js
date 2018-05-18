@@ -28,6 +28,6 @@ export const authenticate = ({ username, password }) => {
 export const refreshAuthentication = ({ refreshToken }) => {
   return instance.post('oauth2/Token', jsonObjToUrlEncoded({
     refresh_token: refreshToken, 
-    grant_type: '[{"key":"grant_type","value":"refresh_token"}]'
+    grant_type: 'refresh_token',
   }));
 };
