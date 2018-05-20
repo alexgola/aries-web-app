@@ -41,7 +41,7 @@ const Field = styled.div`
   margin-bottom: 20px;
 `
 
-const Login = ({onFileUpload, intl, file}) => {
+const Login = ({intl}) => {
 
   const {formatMessage} = intl;
 

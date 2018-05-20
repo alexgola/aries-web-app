@@ -3,6 +3,14 @@
         "WELCOME_TO_ARIES": "Benvenuto in Aries", 
         "USERNAME": "Username", 
         "PASSWORD": "Password", 
-        "LOGIN": "Login"
+        "LOGIN": "Login", 
+        "ID": "ID", 
+        "DESCRIPTION": "Descrizione", 
+        "DATE": "Data", 
+        "TYPE": "Tipo", 
+        "COMPANY_NAME": "Ragione sociale", 
+        "YES": "Si", 
+        "NO": "No",
+        "NA": "Na"
     }
 }
