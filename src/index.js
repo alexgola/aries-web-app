@@ -10,10 +10,12 @@ import configureStore from './store/configure-store'
 import {getParameterByName} from './utils/query-string'
 
 import './index.css'
-import 'semantic-ui-css/semantic.min.css';
+import 'semantic-ui-css/semantic.min.css'
 
 import App from './App'
 import localeData from './assets/locales/data.json'
+
+import monthsUtils from './utils/months-utils'
 
 const defLanguage = 'it';
 const store = configureStore({}); 
@@ -32,6 +34,10 @@ const languageWithoutRegionCode = language.toLowerCase().split(/[_-]+/)[0];
 
 // Try full locale, try locale without region code, fallback to 'en'
 const messages = localeData[languageWithoutRegionCode] || localeData[language] || localeData[defLanguage];
+
+// set format message in external class
+const { intl } = new IntlProvider({locale: language, messages}).getChildContext();
+monthsUtils.setFormatMessage(intl.formatMessage);
 
 // get root element from the dom
 const root = document.getElementById('root');

@@ -1,6 +1,5 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Header, Icon } from 'semantic-ui-react'
 import moment from 'moment'
 
 /**

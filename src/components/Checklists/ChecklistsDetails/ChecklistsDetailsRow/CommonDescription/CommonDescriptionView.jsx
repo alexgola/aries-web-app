@@ -10,7 +10,7 @@ const CommonDescription = ({value}) => {
 
 // PropTypes
 CommonDescription.propTypes = {
-  description: PropTypes.string.isRequired, 
+  value: PropTypes.string.isRequired, 
 };
 
 export default CommonDescription;

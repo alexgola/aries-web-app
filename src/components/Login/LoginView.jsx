@@ -60,7 +60,7 @@ const Login = ({intl}) => {
 
         <Field>
           <Input  
-            fluid={true}
+            fluid
             icon='user' 
             size='large' 
             iconPosition='left' 
@@ -68,14 +68,14 @@ const Login = ({intl}) => {
         </Field>
         <Field>
           <Input 
-            fluid={true}
+            fluid
             icon='lock' 
             size='large' 
             iconPosition='left' 
             placeholder={formatMessage(messages.password)} />
         </Field>
         <PrimaryButton
-          fluid={true}
+          fluid
           size='large'
           text={formatMessage(messages.login)}>
         </PrimaryButton>
