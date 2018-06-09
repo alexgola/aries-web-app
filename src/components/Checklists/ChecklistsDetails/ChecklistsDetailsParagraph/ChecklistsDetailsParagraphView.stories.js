@@ -4,7 +4,9 @@ import { storiesOf } from '@storybook/react';
 import ChecklistsDetailsParagraphView from './ChecklistsDetailsParagraphView';
 
 const data = {
-
+  rows: {
+    
+  }
 }
 
 

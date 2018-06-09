@@ -13,18 +13,18 @@ const instance = (function () {
 
     let monthStringId = null;
     switch(monthIndex) {
-      case 1: monthStringId = 'JANUARY'
-      case 2: monthStringId = 'FEBRUARY'
-      case 3: monthStringId = 'MARCH'
-      case 4: monthStringId = 'APRIL'
-      case 5: monthStringId = 'MAY'
-      case 6: monthStringId = 'JUNE'
-      case 7: monthStringId = 'JULY'
-      case 8: monthStringId = 'AUGUST'
-      case 8: monthStringId = 'SEPTEMBER'
-      case 10: monthStringId = 'OCTOBER'
-      case 11: monthStringId = 'NOVEMBER'
-      case 12: monthStringId = 'DECEMBER'
+      case 1: monthStringId = 'JANUARY'; break;
+      case 2: monthStringId = 'FEBRUARY'; break;
+      case 3: monthStringId = 'MARCH'; break;
+      case 4: monthStringId = 'APRIL'; break;
+      case 5: monthStringId = 'MAY'; break;
+      case 6: monthStringId = 'JUNE'; break;
+      case 7: monthStringId = 'JULY'; break;
+      case 8: monthStringId = 'AUGUST'; break;
+      case 9: monthStringId = 'SEPTEMBER'; break;
+      case 10: monthStringId = 'OCTOBER'; break;
+      case 11: monthStringId = 'NOVEMBER'; break;
+      case 12: monthStringId = 'DECEMBER'; break;
     }
 
     return formatMessage({id: monthStringId});

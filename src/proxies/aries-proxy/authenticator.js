@@ -1,12 +1,11 @@
 /**
  * Class responsible to execute authenticate and refreh the user token
  */
-
 const instance = axios.create({
-  baseURL: process.env.REACT_APP_FLEX_ARIES_SERVICES_HOST,
+  baseURL: process.env.REACT_APP_ARIES_API_HOST,
   headers: {
     'Content-Type': 'application/x-www-form-urlencoded', 
-    'Authorization': 'Basic QXJpZXNNb2JpbGVDbGllbnQ6TktGeXc5NXc3d3JjRzJ2cEJSSkFFQzhL'
+    'Authorization': `Basic ${process.env.REACT_APP_ARIES_BASIC_AUTH_VALUE}`
   }
 });
 

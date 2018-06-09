@@ -45,6 +45,20 @@
         "LASER": "Laser", 
         "NORMAL": "Normale", 
         "HIGH_SENSITIVITY": "Alta sensibilitá", 
-        "SENSOR_NUMBER": "Numero sensore"
+        "SENSOR_NUMBER": "Numero sensore", 
+        "CHECKLIST_PREACUTIONS_TEXT": "Ho preso visione e capito le indicazioni descritte sopra.",
+        "V1": "v1",
+        "V2": "v2",
+        "V3": "v3",
+        "SNMP_VERSION": "Versione SNMP", 
+        "INTERNAL_IP": "IP interno", 
+        "EXTERNAL_IP": "IP esterno", 
+        "PORTS": "Porte", 
+        "SERIAL_NUMBER": "Serial number", 
+        "PING": "Ping",
+        "DDNS_SERVER": "Server DDNS",
+        "DDNS_USERNAME": "Username DDNS",
+        "DDNS_PASSWORD": "Password DDNS",
+        "P2P": "P2P"
     }
 }

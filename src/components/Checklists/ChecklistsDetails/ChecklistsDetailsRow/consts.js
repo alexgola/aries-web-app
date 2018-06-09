@@ -8,3 +8,7 @@ export const MASTER_SLAVE_SLAVE_VALUE = 2;
 export const SUCTION_SYSTEM_TYPE_NORMAL = 1;
 export const SUCTION_SYSTEM_TYPE_LASER = 3;
 export const SUCTION_SYSTEM_TYPE_HIGH_SENSITIVITY = 2;
+
+export const SNPM_VERSION_1 = 1;
+export const SNPM_VERSION_2 = 2;
+export const SNPM_VERSION_3 = 3;

@@ -21,6 +21,5 @@ instance.interceptors.response.use(function (resp) {
 });
 
 export default {
-  checklists: 
-
+  authenticate: authenticate,
 }

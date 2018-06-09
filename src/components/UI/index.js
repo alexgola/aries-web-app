@@ -15,3 +15,6 @@ export const TextArea = myTextArea
 
 import myMonthName from './MonthName'
 export const MonthName = myMonthName
+
+import myCheckbox from './Checkbox'
+export const Checkbox = myCheckbox
