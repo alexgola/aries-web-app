@@ -8,8 +8,6 @@ const instance = (function () {
   const getMonthName = (monthIndex) => {
     if(!formatMessage) throw new Error('[month-utils::getMonthName] formatMessage not defined. Please use "setFormatMessage" to define it.');
     if(monthIndex == null) throw new Error('[month-utils::getMonthName] monthIndes cannot null or undefined.');
-    if(monthIndex > 12) throw new Error('[month-utils::getMonthName] monthIndes cannot be > than 12.');
-    if(monthIndex < 1) throw new Error('[month-utils::getMonthName] monthIndes cannot be < than 1.');
 
     let monthStringId = null;
     switch(monthIndex) {
@@ -25,6 +23,7 @@ const instance = (function () {
       case 10: monthStringId = 'OCTOBER'; break;
       case 11: monthStringId = 'NOVEMBER'; break;
       case 12: monthStringId = 'DECEMBER'; break;
+      default: throw new Error(`[month-utils::getMonthName] Invalid monthIndex (${monthIndex}).`);
     }
 
     return formatMessage({id: monthStringId});

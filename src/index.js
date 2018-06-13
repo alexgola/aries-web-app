@@ -12,13 +12,14 @@ import {getParameterByName} from './utils/query-string'
 import './index.css'
 import 'semantic-ui-css/semantic.min.css'
 
-import App from './App'
+import App from './AppContainer'
 import localeData from './assets/locales/data.json'
 
 import monthsUtils from './utils/months-utils'
 
 const defLanguage = 'it';
 const store = configureStore({}); 
+const routes = require('./routes').default(store) // eslint-disable-line global-require
 
 addLocaleData(...it);
 
@@ -50,7 +51,7 @@ ReactDOM.render(
   <Provider store={store}>
     <IntlProvider locale={language} messages={messages}>
       <BrowserRouter>
-        <App />
+        <App routes={routes} />
       </BrowserRouter>
     </IntlProvider>
   </Provider>, root);

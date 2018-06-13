@@ -1,20 +1,18 @@
 import myForm from './Form'
-export const Form = myForm
-
 import myHeader from './Header'
-export const Header = myHeader
-
 import myList from './List'
-export const List = myList
-
 import myRadio from './Radio'
-export const Radio = myRadio
-
-import myTextArea from './TextArea'
-export const TextArea = myTextArea
-
 import myMonthName from './MonthName'
-export const MonthName = myMonthName
-
+import myTextArea from './TextArea'
+import myMessage from './Message'
 import myCheckbox from './Checkbox'
+
+
+export const Form = myForm
+export const Header = myHeader
+export const List = myList
+export const Radio = myRadio
+export const TextArea = myTextArea
+export const MonthName = myMonthName
 export const Checkbox = myCheckbox
+export const Message = myMessage

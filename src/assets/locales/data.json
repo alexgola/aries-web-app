@@ -59,6 +59,8 @@
         "DDNS_SERVER": "Server DDNS",
         "DDNS_USERNAME": "Username DDNS",
         "DDNS_PASSWORD": "Password DDNS",
-        "P2P": "P2P"
+        "P2P": "P2P", 
+        "INVALID_LOGIN_CREDENTIALS_MESSAGE": "Credenziali errate.",
+        "UNEXPECTED_SERVER_ERROR_MESSAGE": "Errore imprevisto durante la communicazione con il server."
     }
 }

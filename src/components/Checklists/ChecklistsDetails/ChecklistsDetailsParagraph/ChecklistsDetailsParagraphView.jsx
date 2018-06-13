@@ -13,7 +13,7 @@ import {
   CHECKLIST_ROW_TYPE_SUCTION_SYSTEM,
   CHECKLIST_ROW_TYPE_DATE_NOTES,
   CHECKLIST_ROW_TYPE_CONFIGURATION_LAN,
-  CHECKLIST_ROW_TYPE_TOGGLE_NULL_CONFIRm_QTY,
+  CHECKLIST_ROW_TYPE_TOGGLE_NULL_CONFIRM_QTY,
   CHECKLIST_ROW_TYPE_INFO_AND_PRECAUTIONS
 } from '../../consts'
 import {
@@ -34,35 +34,51 @@ import {List} from '../../../UI';
 
 
 const getRow = (row) => {
+  const options = {readonly: false};
+
   switch(row.rowType) {
     case CHECKLIST_ROW_TYPE_TOGGLE_CONFIRM: 
-    break;
+      return <ToggleConfirmRow data={row.data} options={options}/>
+
     case CHECKLIST_ROW_TYPE_TOGGLE_NULL_CONFIRM: 
-    break;
+      return <ToggleConfirmRow data={row.data} options={options}/>
+
     case CHECKLIST_ROW_TYPE_NOTES: 
-    break;
+      return <NotesRow data={row.data} options={options}/>
+
     case CHECKLIST_ROW_TYPE_HEADER: 
-    break;
+      return <HeaderRow data={row.data} options={options}/>
+
     case CHECKLIST_ROW_TYPE_CENTRAL_INFO: 
-    break;
+      return <CentralInfoRow data={row.data} options={options}/>
+
     case CHECKLIST_ROW_TYPE_MASTER_SLAVE: 
-    break;
+      return <MasterSlaveRow data={row.data} options={options}/>
+
     case CHECKLIST_ROW_TYPE_BATTERY_SPEC: 
-    break;
+      return <BatteryInfoRow data={row.data} options={options}/>
+      
     case CHECKLIST_ROW_TYPE_INSTRUM_MEASURES: 
-    break;
+      return <InstrumMeasuresRow data={row.data} options={options}/>
+
     case CHECKLIST_ROW_TYPE_POWER_SUPPLY_INFO: 
-    break;
+      return <PowerSupplyRow data={row.data} options={options}/>
+
     case CHECKLIST_ROW_TYPE_SUCTION_SYSTEM: 
-    break;
+      return <SuctionSystemRow data={row.data} options={options}/>
+
     case CHECKLIST_ROW_TYPE_DATE_NOTES: 
-    break;
+      return <DateNoteRow data={row.data} options={options}/>
+
     case CHECKLIST_ROW_TYPE_CONFIGURATION_LAN: 
-    break;
-    case CHECKLIST_ROW_TYPE_TOGGLE_NULL_CONFIRm_QTY: 
-    break;
+      return <ConfigurationLanRow data={row.data} options={options}/>
+
+    case CHECKLIST_ROW_TYPE_TOGGLE_NULL_CONFIRM_QTY: 
+      return <ToggleConfirmRow data={row.data} options={options}/>
+
     case CHECKLIST_ROW_TYPE_INFO_AND_PRECAUTIONS: 
-    break;
+      return <InfoAndPrecautionsRow data={row.data} options={options}/>
+
   }
 };
 
