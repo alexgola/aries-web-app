@@ -2,12 +2,11 @@
 
 import { combineReducers } from 'redux'
 import { reducer as formReducer } from 'redux-form'
-import sessionReducer from './session/reducers'
+import sessionReducers from './session/reducers'
 
 export const makeRootReducer = asyncReducers => combineReducers({
-  session: sessionReducer,
   form: formReducer,
-
+  session: sessionReducers,
   ...asyncReducers,
 })
 

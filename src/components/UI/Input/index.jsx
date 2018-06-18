@@ -1,9 +1,13 @@
 import React from 'react'
-import { Input } from 'semantic-ui-react'
+import {Input} from 'semantic-ui-react'
 
 class AriesInput extends React.Component {
   render () {
-    return <Input {...this.props} />
+    const size = this.props.size || 'small'
+    
+    return (
+      <Input {...{...this.props, size}} />
+    )
   }
 }
 

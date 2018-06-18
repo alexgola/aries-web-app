@@ -1,2 +1,2 @@
-import container from './LoginContainer'
-export default container
+import ChecklistsListRow from './ChecklistsListRowView'
+export default ChecklistsListRow

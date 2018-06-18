@@ -7,16 +7,18 @@ import it from 'react-intl/locale-data/it'
 
 import registerServiceWorker from './registerServiceWorker'
 import configureStore from './store/configure-store'
-import {getParameterByName} from './utils/query-string'
 
 import './index.css'
-import 'semantic-ui-css/semantic.min.css';
+import 'semantic-ui-css/semantic.min.css'
 
-import App from './App'
+import App from './AppContainer'
 import localeData from './assets/locales/data.json'
+
+import monthsUtils from './utils/months-utils'
 
 const defLanguage = 'it';
 const store = configureStore({}); 
+const routes = require('./routes').default(store) // eslint-disable-line global-require
 
 addLocaleData(...it);
 
@@ -33,6 +35,10 @@ const languageWithoutRegionCode = language.toLowerCase().split(/[_-]+/)[0];
 // Try full locale, try locale without region code, fallback to 'en'
 const messages = localeData[languageWithoutRegionCode] || localeData[language] || localeData[defLanguage];
 
+// set format message in external class
+const { intl } = new IntlProvider({locale: language, messages}).getChildContext();
+monthsUtils.setFormatMessage(intl.formatMessage);
+
 // get root element from the dom
 const root = document.getElementById('root');
 if (root == null) {
@@ -44,7 +50,7 @@ ReactDOM.render(
   <Provider store={store}>
     <IntlProvider locale={language} messages={messages}>
       <BrowserRouter>
-        <App />
+        <App routes={routes} />
       </BrowserRouter>
     </IntlProvider>
   </Provider>, root);

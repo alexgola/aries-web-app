@@ -1,16 +1,21 @@
-/**
- * Class responsible to execute authenticate and refreh the user token
- * @param {*} axios 
- */
 module.exports.init = function(axios) {
-  const exports = {
-      authenticate, 
-      
-  };
+  const get = ({includes}) => {
+    return axios.get('checklist', {
+      params: {
+        includes,
+      }
+    })
+  }
+  const getById = ({includes, id}) => {
+    return axios.get(`checklist/${id}`, {
+      params: {
+        includes,
+      }
+    })
+  }
 
-  return exports;
-
-  function authenticate () {
-
+  return {
+    get,
+    getById,
   }
 }
