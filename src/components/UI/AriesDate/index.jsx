@@ -1,4 +1,3 @@
-import React from 'react'
 import PropTypes from 'prop-types'
 import {getDateByUnixtimestamp} from '../../../utils/datetime-utils'
 
@@ -6,7 +5,7 @@ import {getDateByUnixtimestamp} from '../../../utils/datetime-utils'
  * Component to format date
  * 
  * @param {*} param0 
- * @param {number} param0.unixTimestamp - milliseconds
+ * @param {number} param0.unixTimestamp - seconds
  */
 const AriesDate = ({format, unixTimestamp}) => {
   return getDateByUnixtimestamp({format, unixTimestamp})

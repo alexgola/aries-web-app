@@ -10,7 +10,7 @@ export const createRouteObj = ({ path = '', exact = true, component = '', ...res
 export const createRoutes = store => ({
   routes: [
     createRouteObj({
-      path: '/',
+      path: '/checklists',
       exact: true,
       component: asyncComponent(() => import('./Checklists').then(module => module.default(store))),
     }),

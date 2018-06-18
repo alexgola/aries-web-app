@@ -1,2 +1,2 @@
-import ToggleConfirmRow from './ToggleConfirmRowVIew'
-export default ToggleConfirmRow
+import NotesRow from './NotesRowView'
+export default NotesRow

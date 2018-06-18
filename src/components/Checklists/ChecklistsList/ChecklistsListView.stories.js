@@ -40,5 +40,5 @@ const data = {
 }
 
 storiesOf('Checklists', module)
-    .addWithJSX('List', () => <ChecklistList data={data} />);
+    .addWithJSX('List', () => <ChecklistList isLoading={false} data={data} />);
 

@@ -10,7 +10,7 @@ export const ARIES_API_TOKEN = "ARIES_API_TOKEN"
 let tokenData = null
 
 const instance = axios.create({
-  baseURL: process.env.REACT_APP_FLEX_GATEWAY_HOST,
+  baseURL: process.env.REACT_APP_ARIES_API_HOST,
   headers: {'Content-Type': 'application/json'}
 })
 
@@ -44,6 +44,7 @@ instance.interceptors.response.use(function (resp) {
 
 export default {
   authenticate: authenticate,
-  checklsits: checklists.init(instance), 
+  refreshAuthentication: refreshAuthentication,
+  checklists: checklists.init(instance), 
   users: users.init(instance),
 }

@@ -1,14 +1,10 @@
-import ChecklistsPageContainer from './ChecklistsContainer'
-//import { injectReducer } from '../../store/reducers'
+import ChecklistsView from './ChecklistsView'
+import { injectReducer } from '../../store/reducers'
+import ChecklistsReducer from './modules/ChecklistsReducer'
+import ChecklistsSagas from './modules/ChecklistsSagas'
 
 export default (store) => {
-  //injectReducer(store, { key: 'home', reducer: homeReducer })
-
-  //store.runSaga(HomeSagas)
-  //store.runSaga(HeroSagas)
-  //store.runSaga(PickedCategoriesSagas)
-  //store.runSaga(SponsorSliderSagas)
-  //store.runSaga(ArticleGridSwitchSagas)
-
-  return ChecklistsPageContainer
+  injectReducer(store, { key: 'checklists', reducer: ChecklistsReducer })
+  store.runSaga(ChecklistsSagas)
+  return ChecklistsView
 }

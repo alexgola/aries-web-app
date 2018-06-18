@@ -1,2 +1,2 @@
-import ToggleConfirmRow from './ToggleConfirmRowVIew'
+import ToggleConfirmRow from './ToggleConfirmRowView'
 export default ToggleConfirmRow

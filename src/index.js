@@ -7,7 +7,6 @@ import it from 'react-intl/locale-data/it'
 
 import registerServiceWorker from './registerServiceWorker'
 import configureStore from './store/configure-store'
-import {getParameterByName} from './utils/query-string'
 
 import './index.css'
 import 'semantic-ui-css/semantic.min.css'

@@ -1,14 +1,13 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import styled from 'styled-components'
 import { Table } from 'semantic-ui-react'
+import {withRouter} from 'react-router-dom'
 import AriesDate from '../../UI/AriesDate'
 
 
-const ChecklistListRow = ({data}) => {
-
+const ChecklistListRow = ({data, history, match}) => {
   return (
-    <Table.Row>
+    <Table.Row onClick={_ =>  history.push(`${match.url}/${data.id}`)}>
         <Table.Cell>{data.id}</Table.Cell>
         <Table.Cell>
             <AriesDate unixTimestamp={data.executionDate}/>
@@ -22,8 +21,10 @@ const ChecklistListRow = ({data}) => {
 
 // PropTypes
 ChecklistListRow.propTypes = {
-  data: PropTypes.object.isRequired
+  data: PropTypes.object.isRequired,
+  history: PropTypes.object.isRequired,
+  match: PropTypes.object.isRequired,
 };
 
 
-export default ChecklistListRow;
+export default withRouter(ChecklistListRow);

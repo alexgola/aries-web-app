@@ -1,2 +1,2 @@
-import InfoAndPrecautionsRowView from '../InfoAndPrecautionsRowView'
+import InfoAndPrecautionsRowView from './InfoAndPrecautionsRowView'
 export default InfoAndPrecautionsRowView

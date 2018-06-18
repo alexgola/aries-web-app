@@ -17,7 +17,7 @@ export default createReducer({ ...initialState }, {
         user: null
     }
   },
-  [actionTypes.USER_LOGIN_SUCCESS](state, action){
+  [actionTypes.USER_LOGIN_SUCCESS](state){
     return { ...state, 
         auth: {
             ...state.auth, 
@@ -35,4 +35,12 @@ export default createReducer({ ...initialState }, {
         }
     }
   },
+  [actionTypes.RESET_LOGIN_ERROR](state){
+    return { ...state,
+      auth: {
+        ...state.auth,
+        error: null,
+      }
+    }
+  }
 })

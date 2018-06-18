@@ -1,4 +1,5 @@
 import React from 'react';
+import {Router} from 'react-router-dom'
 import { storiesOf } from '@storybook/react';
 import ChecklistListRow from './ChecklistsListRowView';
 import { Table } from 'semantic-ui-react';
@@ -17,9 +18,9 @@ const data = {
 
 const WrapperTamplate = ({children}) => (
     <Table> 
-        <Table.Body>
-            {children}
-        </Table.Body>
+      <Table.Body>
+        {children}
+      </Table.Body>
     </Table>
 );
 

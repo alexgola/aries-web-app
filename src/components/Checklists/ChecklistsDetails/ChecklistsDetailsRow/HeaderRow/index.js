@@ -1,2 +1,2 @@
-import ToggleConfirmRow from './ToggleConfirmRowVIew'
-export default ToggleConfirmRow
+import HeaderRow from './HeaderRowView'
+export default HeaderRow

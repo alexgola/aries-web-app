@@ -3,20 +3,15 @@ import { genActions, createRequestTypes } from '../../../store/actions'
 // ======================================================
 // Constants
 // ======================================================
-
 export const actionTypes = {
-  ...createRequestTypes('SAVED_CART'),
-  ...createRequestTypes('DELETE_ARTICLE'),
-  ...createRequestTypes('EMPTY_SAVED_CART'),
+  ...createRequestTypes('CHECKLISTS_GET'),
+  ...createRequestTypes('CHECKLIST_DETAIL'),
 }
 
 
 // ======================================================
 // ACTIONS
 // ======================================================
-
 const createActions = genActions(actionTypes)
-
-export const savedCart = createActions('SAVED_CART')
-export const deleteArticle = createActions('DELETE_ARTICLE')
-export const emptySavedCart = createActions('EMPTY_SAVED_CART')
+export const getChecklists = createActions('CHECKLISTS_GET')
+export const checklistDetail = createActions('CHECKLIST_DETAIL')

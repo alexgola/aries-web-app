@@ -61,6 +61,16 @@
         "DDNS_PASSWORD": "Password DDNS",
         "P2P": "P2P", 
         "INVALID_LOGIN_CREDENTIALS_MESSAGE": "Credenziali errate.",
-        "UNEXPECTED_SERVER_ERROR_MESSAGE": "Errore imprevisto durante la communicazione con il server."
+        "UNEXPECTED_SERVER_ERROR_MESSAGE": "Errore imprevisto durante la communicazione con il server.",
+        "ADDRESS": "INDIRIZZO", 
+        "CITY": "Città", 
+        "RESPONSIBLE": "Responsabile", 
+        "TASK": "Mansione", 
+        "SYSTEM_ID": "ID impianto", 
+        "INSTALLED_ON": "Installato il",
+        "INSTALLED_IN": "Installato in", 
+        "VISIT_NUMBER": "Numero visita", 
+        "PERIODIC_CHECK": "Controllo periodico", 
+        "TECHNICIANS": "Tecnici"
     }
 }

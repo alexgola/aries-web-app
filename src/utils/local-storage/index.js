@@ -2,4 +2,7 @@
 export const setLocalStorageItem = (key, value) => localStorage.setItem(key, JSON.stringify(value));
 
 // Retrieve the object from storage
-export const getLocalStorageItem = (key) => localStorage.getItem(key);
+export const getLocalStorageItem = (key) => {
+  const res = localStorage.getItem(key);
+  return res && JSON.parse(res);
+}

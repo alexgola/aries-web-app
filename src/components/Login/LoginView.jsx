@@ -7,7 +7,7 @@ import Header from '../UI/Header'
 import Icon from '../UI/Icon'
 import Input from '../UI/Input'
 import PrimaryButton from '../UI/PrimaryButton'
-import { Message } from '../UI';
+import { Message, Form } from '../UI';
 
 const messages = defineMessages({
   welcome: {id: 'WELCOME_TO_ARIES'},
@@ -28,11 +28,11 @@ const MainContainer = styled.div`
   padding: 0px;
 `
 
-const FormContainer = styled.div`
+const FormContainer = styled(Form)`
   display: inline-block;
   text-align: center;
   width:100%;
-  max-width:350px;
+  max-width:350px!important;
 `
 
 const IconContainer = styled.div`
@@ -95,6 +95,7 @@ class Login extends React.Component  {
               icon='user' 
               size='large' 
               iconPosition='left' 
+              autoComplete='username'
               placeholder={formatMessage(messages.username)} 
               value={username || ''}
               onChange={e => this.setState({username: e.target.value})} />
@@ -106,6 +107,7 @@ class Login extends React.Component  {
               size='large' 
               iconPosition='left' 
               type='password'
+              autoComplete='current-password'
               placeholder={formatMessage(messages.password)}
               value={password || ''}
               onChange={e => this.setState({password: e.target.value})} />

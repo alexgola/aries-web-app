@@ -1,32 +1,63 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
-import {Switch, Route, Redirect} from 'react-router-dom'
-import Login from './components/Login'
-import PrivateRouteView from './components/Routes/PrivateRoute';
-
+import AppRoutes from './App.routes'
+import { getLocalStorageItem, setLocalStorageItem } from './utils/local-storage';
+import { ARIES_API_TOKEN } from './proxies/aries-proxy';
+import { Dimmer, Loader } from './components/UI';
+import {getParameterByName} from './utils/query-string'
 
 const MainContainer = styled.div`
   height: 100%;
 `
 
-const App = ({isLogged, routes}) => (
-  <MainContainer>
-    <Switch>
-      <Route exact path='/login' component={Login}></Route>      
-      {
-        isLogged === true 
-        ? null
-        : <Redirect to='/login' />
+class App extends React.PureComponent {
+  constructor(props) {
+    super(props);
+    this.state = {
+      isAutoLoginRunning: true,
+    } 
+  }
+
+  componentDidMount() {
+    let refreshToken = getParameterByName('refreshToken')
+
+    if(!refreshToken) {
+      const tokenData = getLocalStorageItem(ARIES_API_TOKEN)
+      if(tokenData) refreshToken = tokenData.refresh_token 
+    } else {
+      setLocalStorageItem(ARIES_API_TOKEN, null)
+    }
+
+    if(refreshToken) this.props.autoLogin(refreshToken)
+    else this.setState({isAutoLoginRunning: false})
+  }
+
+  componentDidUpdate() {
+    if(this.state.isAutoLoginRunning) {
+      const {isAuthPending, isLogged} = this.props
+      if(!isAuthPending) {
+        this.setState({isAutoLoginRunning: false})
+        if(!isLogged) this.props.resetLoginError()
       }
-      {
-        routes.routes.map(({ component, ...otherRouteProp }) => (
-          <PrivateRouteView isLogged={isLogged} key={otherRouteProp.path} path={otherRouteProp.path} component={component}/>
-        ))
-      }
-    </Switch>
-  </MainContainer>
-);
+    }
+  }
+
+  render() {
+    const {isLogged, routes} = this.props
+    const {isAutoLoginRunning} = this.state
+
+    if(isAutoLoginRunning) {
+      return <Dimmer inverted active={isAutoLoginRunning}>
+        <Loader inverted />
+      </Dimmer>
+    }
+
+    return <MainContainer>
+      <AppRoutes isLogged={isLogged} routes={routes}/>
+    </MainContainer>
+  }
+};
 
 App.propTypes = {  
   routes: PropTypes.objectOf(PropTypes.arrayOf(PropTypes.shape({
@@ -34,6 +65,8 @@ App.propTypes = {
     exact: PropTypes.bool.isRequired,
     component: PropTypes.func.isRequired,
   }))).isRequired,
+  autoLogin: PropTypes.func.isRequired, 
+  resetLoginError: PropTypes.func.isRequired,
 }
 
 export default App;

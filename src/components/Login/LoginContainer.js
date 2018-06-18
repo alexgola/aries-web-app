@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'; 
 import LoginView from './LoginView';
-import { login } from '../../store/session/actions';
+import { execLogin } from '../../store/session/actions';
 
 const mapStateToProps = (state) => {
   return {
@@ -11,7 +11,7 @@ const mapStateToProps = (state) => {
 }; 
 const mapDispatchToProps = (dispatch) => {
   return {
-    execLogin: (username, password) => dispatch(login.request({username, password}))
+    execLogin: (username, password) => dispatch(execLogin({username, password}))
   }
 };
 export default connect(mapStateToProps, mapDispatchToProps)(LoginView); 

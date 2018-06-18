@@ -1,38 +1,35 @@
-import BatteryInfoRow from './BatteryInfoRow'
-export const BatteryInfoRow
+import myBatteryInfoRow from './BatteryInfoRow'
+export const BatteryInfoRow = myBatteryInfoRow
 
-import CentralInfoRow from './CentralInfoRow'
-export const CentralInfoRow
+import myCentralInfoRow from './CentralInfoRow'
+export const CentralInfoRow = myCentralInfoRow
 
-import ConfigurationLanRow from './ConfigurationLanRow'
-export const ConfigurationLanRow
+import myConfigurationLanRow from './ConfigurationLanRow'
+export const ConfigurationLanRow = myConfigurationLanRow
 
-import CentralInfoRow from './CentralInfoRow'
-export const CentralInfoRow
+import myDateNoteRow from './DateNoteRow'
+export const DateNoteRow = myDateNoteRow
 
-import DateNoteRow from './DateNoteRow'
-export const DateNoteRow
+import myHeaderRow from './HeaderRow'
+export const HeaderRow = myHeaderRow
 
-import HeaderRow from './HeaderRow'
-export const HeaderRow
+import myInfoAndPrecautionsRow from './InfoAndPrecautionsRow'
+export const InfoAndPrecautionsRow = myInfoAndPrecautionsRow
 
-import InfoAndPrecautionsRow from './InfoAndPrecautionsRow'
-export const InfoAndPrecautionsRow
+import myInstrumMeasuresRow from './InstrumMeasuresRow'
+export const InstrumMeasuresRow = myInstrumMeasuresRow
 
-import InstrumMeasuresRow from './InstrumMeasuresRow'
-export const InstrumMeasuresRow
+import myMasterSlaveRow from './MasterSlaveRow'
+export const MasterSlaveRow = myMasterSlaveRow
 
-import MasterSlaveRow from './MasterSlaveRow'
-export const MasterSlaveRow
+import myNotesRow from './NotesRow'
+export const NotesRow = myNotesRow
 
-import NotesRow from './NotesRow'
-export const NotesRow
+import myPowerSupplyRow from './PowerSupplyRow'
+export const PowerSupplyRow = myPowerSupplyRow
 
-import PowerSupplyRow from './PowerSupplyRow'
-export const PowerSupplyRow
+import mySuctionSystemRow from './SuctionSystemRow'
+export const SuctionSystemRow = mySuctionSystemRow
 
-import SuctionSystemRow from './SuctionSystemRow'
-export const SuctionSystemRow
-
-import ToggleConfirmRow from './ToggleConfirmRow'
-export const ToggleConfirmRow
+import myToggleConfirmRow from './ToggleConfirmRow'
+export const ToggleConfirmRow = myToggleConfirmRow

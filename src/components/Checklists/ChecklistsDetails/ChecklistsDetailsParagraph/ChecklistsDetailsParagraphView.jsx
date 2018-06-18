@@ -1,5 +1,5 @@
 import React from 'react'
-import PropTypes from 'prop-types'
+import {map} from 'ramda'
 import {
   CHECKLIST_ROW_TYPE_TOGGLE_CONFIRM,
   CHECKLIST_ROW_TYPE_TOGGLE_NULL_CONFIRM,
@@ -38,53 +38,54 @@ const getRow = (row) => {
 
   switch(row.rowType) {
     case CHECKLIST_ROW_TYPE_TOGGLE_CONFIRM: 
-      return <ToggleConfirmRow data={row.data} options={options}/>
+      return <ToggleConfirmRow data={row} options={options}/>
 
     case CHECKLIST_ROW_TYPE_TOGGLE_NULL_CONFIRM: 
-      return <ToggleConfirmRow data={row.data} options={options}/>
+      return <ToggleConfirmRow data={row} options={options}/>
 
     case CHECKLIST_ROW_TYPE_NOTES: 
       return <NotesRow data={row.data} options={options}/>
 
     case CHECKLIST_ROW_TYPE_HEADER: 
-      return <HeaderRow data={row.data} options={options}/>
+      return <HeaderRow data={row} options={options}/>
 
     case CHECKLIST_ROW_TYPE_CENTRAL_INFO: 
-      return <CentralInfoRow data={row.data} options={options}/>
+      return <CentralInfoRow data={row} options={options}/>
 
     case CHECKLIST_ROW_TYPE_MASTER_SLAVE: 
-      return <MasterSlaveRow data={row.data} options={options}/>
+      return <MasterSlaveRow data={row} options={options}/>
 
     case CHECKLIST_ROW_TYPE_BATTERY_SPEC: 
-      return <BatteryInfoRow data={row.data} options={options}/>
+      return <BatteryInfoRow data={row} options={options}/>
       
     case CHECKLIST_ROW_TYPE_INSTRUM_MEASURES: 
-      return <InstrumMeasuresRow data={row.data} options={options}/>
+      return <InstrumMeasuresRow data={row} options={options}/>
 
     case CHECKLIST_ROW_TYPE_POWER_SUPPLY_INFO: 
-      return <PowerSupplyRow data={row.data} options={options}/>
+      return <PowerSupplyRow data={row} options={options}/>
 
     case CHECKLIST_ROW_TYPE_SUCTION_SYSTEM: 
-      return <SuctionSystemRow data={row.data} options={options}/>
+      return <SuctionSystemRow data={row} options={options}/>
 
     case CHECKLIST_ROW_TYPE_DATE_NOTES: 
-      return <DateNoteRow data={row.data} options={options}/>
+      return <DateNoteRow data={row} options={options}/>
 
     case CHECKLIST_ROW_TYPE_CONFIGURATION_LAN: 
-      return <ConfigurationLanRow data={row.data} options={options}/>
+      return <ConfigurationLanRow data={row} options={options}/>
 
     case CHECKLIST_ROW_TYPE_TOGGLE_NULL_CONFIRM_QTY: 
-      return <ToggleConfirmRow data={row.data} options={options}/>
+      return <ToggleConfirmRow data={row} options={options}/>
 
     case CHECKLIST_ROW_TYPE_INFO_AND_PRECAUTIONS: 
-      return <InfoAndPrecautionsRow data={row.data} options={options}/>
+      return <InfoAndPrecautionsRow data={row} options={options}/>
 
   }
 };
 
-const ChecklistsDetailsParagraph = ({}) => {
+const ChecklistsDetailsParagraph = ({rows}) => {
   return (
     <List>
+      {map((rowData) => getRow(rowData), rows)}
     </List>
   )
 };
