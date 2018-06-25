@@ -1,0 +1,2 @@
+import ChecklistsDetailsGeneralSystemView from './ChecklistsDetailsGeneralSystemView'
+export default ChecklistsDetailsGeneralSystemView

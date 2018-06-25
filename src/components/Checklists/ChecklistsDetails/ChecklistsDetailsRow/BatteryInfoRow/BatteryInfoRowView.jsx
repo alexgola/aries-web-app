@@ -1,9 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import styled, {css} from 'styled-components'
+import styled from 'styled-components'
 import {injectIntl, intlShape, defineMessages} from 'react-intl'
 import Input from '../../../../UI/Input'
-import {Form, Radio} from '../../../../UI'
+import {Form} from '../../../../UI'
 import rowWrapper from '../CommonRowWrapper';
 import {dataShape, optionsShape} from './prop-types'
 import {media} from '../../../../style-utils'
@@ -41,11 +41,6 @@ const PersistentSeparator = styled(Separator)`
   display: inline-block!important;
 `
 
-const StyledRadio = styled(Radio)`
-  width: 50%;
-`
-
-
 const messages = defineMessages({
   quantity: { id: 'QUANTITY' },
   ampere: { id: 'AMPERE' },
@@ -62,6 +57,7 @@ const BatteryInfoRow = ({intl, data, onChange, options}) => {
     data[field] = value;
     onChange(data);
   }
+
 
   return (
     <div>

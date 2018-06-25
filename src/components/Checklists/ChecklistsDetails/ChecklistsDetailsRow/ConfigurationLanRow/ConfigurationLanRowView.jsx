@@ -2,8 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import {injectIntl, intlShape, defineMessages} from 'react-intl'
-import Input from '../../../../UI/Input'
-import {Form, Radio, Checkbox} from '../../../../UI'
+import {Form, Radio, Checkbox, Input} from '../../../../UI'
 import rowWrapper from '../CommonRowWrapper';
 import {SNPM_VERSION_1, SNPM_VERSION_2, SNPM_VERSION_3} from '../consts';
 import {dataShape, optionsShape} from './prop-types'
@@ -92,7 +91,7 @@ const ConfigurationLanRow = ({intl, data, onChange, options}) => {
       <MainContainer>
         <FormField>
           <label>{formatMessage(messages.internalIp)}</label>
-          <Input            
+          <Input         
             value={internalIp}
             type='text' />
         </FormField>
@@ -124,19 +123,19 @@ const ConfigurationLanRow = ({intl, data, onChange, options}) => {
           <StyledRadio
             label={formatMessage(messages.v1)}
             value={SNPM_VERSION_1}
-            checked={snmpVersion === SNPM_VERSION_1}
+            checked={snmpVersion == SNPM_VERSION_1} //eslint-disable-line eqeqeq
           />
 
           <StyledRadio
             label={formatMessage(messages.v2)}
             value={SNPM_VERSION_2}
-            checked={snmpVersion === SNPM_VERSION_2}
+            checked={snmpVersion == SNPM_VERSION_2} //eslint-disable-line eqeqeq
           />
 
           <StyledRadio
             label={formatMessage(messages.v3)}
             value={SNPM_VERSION_3}
-            checked={snmpVersion === SNPM_VERSION_3}
+            checked={snmpVersion == SNPM_VERSION_3} //eslint-disable-line eqeqeq
           />
         </FormField>
         <Separator/>
@@ -193,6 +192,14 @@ const ConfigurationLanRow = ({intl, data, onChange, options}) => {
           />
         </FormField>
         <Separator/>
+        <FormField>
+        <label>{formatMessage(messages.ping)}</label>
+          <Input 
+            value={ping}
+            fluid
+            onChange={(_, {value}) => handleChange({field: 'ping', value})}
+          />
+        </FormField>
         <FormField>
         <label>{formatMessage(messages.notes)}</label>
           <Input 

@@ -1,6 +1,9 @@
-import { css } from "styled-components";
+import styled, { css } from "styled-components";
+import Form from "./UI/Form";
+import { Header } from "./UI";
 
-const maxWidth = 1280;
+const darkGrey = '#404040';
+const lightGrey = '#BCBDC1'
 
 // style-utils.js
 export function contentCnt() {
@@ -9,6 +12,17 @@ export function contentCnt() {
   `;
 }
 
+export const ColorDarkGrey = css`
+  color: ${darkGrey}!important;
+`
+
+export const ColorWhite = css`
+  color: white!important;
+`
+
+export const HeaderFontHeight = css`
+  font-weight: 300!important;
+`
 
 export const BackgroundGreen = css`
   background-color: #16ab39;
@@ -19,9 +33,11 @@ export const BackgroundLightBlue = css`
 `
 
 export const BackgroundDarkGrey = css`
-  background-color: #404040;
+  background-color: ${darkGrey};
 `
-
+export const BackgroundLightGrey = css`
+  background-color: ${lightGrey};
+`
 const sizes = {
   desktop: 992,
   tablet: 768,
@@ -40,3 +56,32 @@ export const media = Object.keys(sizes).reduce((accumulator, label) => {
   return accumulator
 }, {})
 
+export const CardPadding = css`
+  padding: 10px 20px!important;
+`;
+
+export const Card = styled.div`
+  ${CardPadding}
+`;
+
+export const FormCard = styled(Form)`
+  ${CardPadding}
+`
+
+export const NoMarginTop = css`
+  margin-top: 0px!important;
+`;
+
+export const NoMarginBottom = css`
+  margin-bottom: 0px!important;
+`;
+
+export const HeaderH2 = styled(Header)`
+  ${BackgroundDarkGrey}
+  ${ColorWhite}
+  ${CardPadding}
+  ${NoMarginBottom}
+  ${HeaderFontHeight}
+  padding-top: 18px!important;
+  padding-bottom: 18px!important;
+`

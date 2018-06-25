@@ -7,9 +7,11 @@ import {List} from 'semantic-ui-react';
 const data = {
   description: "A list can contain a description",
   data: {
-    value: 1, 
-    notes: "Individual properties of a shape, being shapes themselves."
-  }, 
+    nameValuePairs: {
+      value: 1, 
+      notes: "Individual properties of a shape, being shapes themselves."
+    }, 
+  },
   employeeIndications: "Greenpoint's best choice for quick and delicious sushi."
 }
 

@@ -3,7 +3,6 @@ import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import {injectIntl, intlShape, defineMessages} from 'react-intl'
 import Radio from '../../../../UI/Radio'
-import List from '../../../../UI/List'
 import Input from '../../../../UI/Input'
 import {Form} from '../../../../UI'
 import rowWrapper from '../CommonRowWrapper';
@@ -59,20 +58,20 @@ const ToggleConfirmRow = ({intl, data, onChange, options}) => {
         <StyledRadio
           label={formatMessage(messages.yes)}
           value={TOGGLE_CONFIRM_YES_VALUE}
-          checked={value === TOGGLE_CONFIRM_YES_VALUE}
+          checked={value == TOGGLE_CONFIRM_YES_VALUE} //eslint-disable-line eqeqeq
           onChange={(_, {value}) => handleChange({field: 'value', value})}
         />
         <StyledRadio
           label={formatMessage(messages.no)}
           value={TOGGLE_CONFIRM_NO_VALUE}
-          checked={value === TOGGLE_CONFIRM_NO_VALUE}
+          checked={value == TOGGLE_CONFIRM_NO_VALUE} //eslint-disable-line eqeqeq
           onChange={(_, {value}) => handleChange({field: 'value', value})}
         />
         {hasNa === true ?         
           <StyledRadio
             label={formatMessage(messages.na)}
             value={TOGGLE_CONFIRM_NA_VALUE}
-            checked={value === TOGGLE_CONFIRM_NA_VALUE}
+            checked={value == TOGGLE_CONFIRM_NA_VALUE} //eslint-disable-line eqeqeq
             onChange={(_, {value}) => handleChange({field: 'value', value})}
           />
         : null}

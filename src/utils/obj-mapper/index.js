@@ -6,16 +6,18 @@ import {isObject} from '../is-object'
  * @param {any} apiObj 
  * @example {my_test: 1, my_acc: 'asdasd'} --> {myTest: 1, myAcc: 'asdasd'}
  */
-export const apiObjToJsonObj = (apiObj) => {
+export const apiObjToJsonObj = (apiObj, exceptedFields = []) => {
     let obj = isArray(apiObj) ? [] : Object.create({});
 
-    return Object.keys(apiObj).reduce((acc, key) => {
+    return Object.keys(apiObj).reduce((_, key) => {
         const apiVal = apiObj[key];
-        const newKey = key.toLowerCase().replace(/_([a-z])/g, (g) => (g[1].toUpperCase())); 
+        const newKey = exceptedFields.indexOf(key) === -1 
+            ? key.toLowerCase().replace(/_([a-z])/g, (g) => (g[1].toUpperCase()))
+            : key; 
 
         let convertedVal = null;
         if(isObject(apiVal)) { 
-            convertedVal = apiObjToJsonObj(apiVal);
+            convertedVal = apiObjToJsonObj(apiVal, exceptedFields);
         } else convertedVal = apiVal; 
 
         obj[newKey] = convertedVal;

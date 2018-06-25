@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import styled, {css} from 'styled-components'
+import styled from 'styled-components'
 import {injectIntl, intlShape, defineMessages} from 'react-intl'
 import Input from '../../../../UI/Input'
 import {Form} from '../../../../UI'

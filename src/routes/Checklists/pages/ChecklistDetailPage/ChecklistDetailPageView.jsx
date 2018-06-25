@@ -1,5 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import ChecklistsDetailsGeneral from '../../../../components/Checklists/ChecklistsDetails/ChecklistsDetailsGeneral/ChecklistsDetailsGeneralView';
+import { Dimmer, Loader } from '../../../../components/UI';
+import {map} from 'ramda'
+import ChecklistsDetailsParagraph from '../../../../components/Checklists/ChecklistsDetails/ChecklistsDetailsParagraph/ChecklistsDetailsParagraphView';
 
 class ChecklistDetailPageView extends React.PureComponent {
   componentDidMount () {
@@ -8,14 +12,28 @@ class ChecklistDetailPageView extends React.PureComponent {
   }
   render () {
     const {data, isLoading} = this.props.detail
+    
+    if(isLoading) {
+      return (
+        <Dimmer inverted active={isLoading}>
+            <Loader inverted />
+        </Dimmer>
+      );
+    }
+
     return (
-      <div> asdasdsadasdasdsadsa {JSON.stringify(data)}</div>
+      <div>
+        <ChecklistsDetailsGeneral checklist={data}/> 
+        ${map(item => {
+          return <ChecklistsDetailsParagraph key={`checklist_paragraph_${item.id}`} data={item}/> 
+        }, data.paragraphs)}
+      </div>
     )
   }
 }
 
 ChecklistDetailPageView.propTypes = {
-  data: PropTypes.object.isRequired, 
+  data: PropTypes.object, 
 }
 
 export default ChecklistDetailPageView

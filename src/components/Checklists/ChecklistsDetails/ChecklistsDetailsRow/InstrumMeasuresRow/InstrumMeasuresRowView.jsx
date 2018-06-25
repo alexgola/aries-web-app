@@ -1,9 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import styled, {css} from 'styled-components'
+import styled from 'styled-components'
 import {injectIntl, intlShape, defineMessages} from 'react-intl'
 import Input from '../../../../UI/Input'
-import {Form, List, Radio} from '../../../../UI'
+import {Form} from '../../../../UI'
 import rowWrapper from '../CommonRowWrapper';
 import {dataShape, optionsShape} from './prop-types'
 import {media} from '../../../../style-utils'
@@ -30,11 +30,6 @@ const Separator = styled.div`
 const PersistentSeparator = styled(Separator)`
   display: inline-block!important;
 `
-
-const StyledRadio = styled(Radio)`
-  width: 50%;
-`
-
 
 const messages = defineMessages({
   startVoltage: { id: 'START_VOLT' },

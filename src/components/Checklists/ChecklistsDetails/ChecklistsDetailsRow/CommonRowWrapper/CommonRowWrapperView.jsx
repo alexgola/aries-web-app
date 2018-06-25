@@ -3,23 +3,22 @@ import PropTypes from 'prop-types'
 import List from '../../../../UI/List'
 import Description from '../CommonDescription'
 import styled from 'styled-components'
-import {dataShape} from './prop-types'
+import { CardPadding } from '../../../../style-utils';
 
 export const StyledItem = styled(List.Item)`
-  padding: 10px 20px!important;
+  ${CardPadding}
 `
 const StyledComponentCnt = styled.div`
   margin: 15px 0;
 `
 
 const CommonRowWrapper = (Component) => ({data, onChange, options}) => {
-
-  const {description, employeeIndications} = data; 
+  const {description, employeeIndications} = data
   return (
     <StyledItem>
       <Description value={description}/>
       <StyledComponentCnt> 
-        <Component onChange={onChange} data={data.data} options={options}/> 
+        <Component onChange={onChange} data={data.data.nameValuePairs} options={options}/> 
       </StyledComponentCnt>
       {employeeIndications}
     </StyledItem>

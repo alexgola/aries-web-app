@@ -8,6 +8,8 @@ import myMessage from './Message'
 import myCheckbox from './Checkbox'
 import myDimmer from './Dimmer'
 import myLoader from './Loader'
+import myInput from './Input'
+import mySimpleDiveder from './Divider'
 
 
 export const Form = myForm
@@ -20,3 +22,5 @@ export const Checkbox = myCheckbox
 export const Message = myMessage
 export const Loader = myLoader
 export const Dimmer = myDimmer
+export const Input = myInput
+export const SimpleDivider = mySimpleDiveder

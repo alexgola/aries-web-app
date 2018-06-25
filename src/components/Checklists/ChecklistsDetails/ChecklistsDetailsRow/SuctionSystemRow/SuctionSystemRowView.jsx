@@ -73,19 +73,19 @@ const SuctionSystemRow = ({intl, data, onChange, options}) => {
           <StyledRadio
             label={formatMessage(messages.normal)}
             value={SUCTION_SYSTEM_TYPE_NORMAL}
-            checked={suctionSystemType === SUCTION_SYSTEM_TYPE_NORMAL}
+            checked={suctionSystemType == SUCTION_SYSTEM_TYPE_NORMAL} //eslint-disable-line eqeqeq
           />
 
           <StyledRadio
             label={formatMessage(messages.highSensitivity)}
             value={SUCTION_SYSTEM_TYPE_HIGH_SENSITIVITY}
-            checked={suctionSystemType === SUCTION_SYSTEM_TYPE_HIGH_SENSITIVITY}
+            checked={suctionSystemType == SUCTION_SYSTEM_TYPE_HIGH_SENSITIVITY} //eslint-disable-line eqeqeq
           />
 
           <StyledRadio
             label={formatMessage(messages.laser)}
             value={SUCTION_SYSTEM_TYPE_LASER}
-            checked={suctionSystemType === SUCTION_SYSTEM_TYPE_LASER}
+            checked={suctionSystemType == SUCTION_SYSTEM_TYPE_LASER} //eslint-disable-line eqeqeq
           />
         </RadioGroupField>
         <Separator/>

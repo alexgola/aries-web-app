@@ -14,7 +14,7 @@ import {
   CHECKLIST_ROW_TYPE_DATE_NOTES,
   CHECKLIST_ROW_TYPE_CONFIGURATION_LAN,
   CHECKLIST_ROW_TYPE_TOGGLE_NULL_CONFIRM_QTY,
-  CHECKLIST_ROW_TYPE_INFO_AND_PRECAUTIONS
+  CHECKLIST_ROW_TYPE_INFO_AND_PRECAUTIONS, 
 } from '../../consts'
 import {
   BatteryInfoRow,
@@ -31,62 +31,79 @@ import {
   ToggleConfirmRow,
 } from '../ChecklistsDetailsRow';
 import {List} from '../../../UI';
+import styled from 'styled-components';
+import {NoMarginTop, HeaderH2 } from '../../../style-utils';
 
-
+const SyledList = styled(List)`
+  ${NoMarginTop}
+`
 const getRow = (row) => {
   const options = {readonly: false};
+  const key = `checklist_row_${row.paragraphId}_${row.id}`;
+  const onChange = () => {};
+  
+  const commonProps = {
+    key, 
+    data: row, 
+    onChange,
+  }
 
   switch(row.rowType) {
     case CHECKLIST_ROW_TYPE_TOGGLE_CONFIRM: 
-      return <ToggleConfirmRow data={row} options={options}/>
+      return <ToggleConfirmRow {...commonProps} options={{...options, hasNa: false, hasQuantity: false}}/>
 
     case CHECKLIST_ROW_TYPE_TOGGLE_NULL_CONFIRM: 
-      return <ToggleConfirmRow data={row} options={options}/>
+      return <ToggleConfirmRow {...commonProps} options={{...options, hasNa: true, hasQuantity: false}}/>
 
     case CHECKLIST_ROW_TYPE_NOTES: 
-      return <NotesRow data={row.data} options={options}/>
+      return <NotesRow {...commonProps} options={options}/>
 
     case CHECKLIST_ROW_TYPE_HEADER: 
-      return <HeaderRow data={row} options={options}/>
+      return <HeaderRow {...commonProps} text={(row.data.nameValuePairs).header} options={options}/>
 
     case CHECKLIST_ROW_TYPE_CENTRAL_INFO: 
-      return <CentralInfoRow data={row} options={options}/>
+      return <CentralInfoRow {...commonProps} options={options}/>
 
     case CHECKLIST_ROW_TYPE_MASTER_SLAVE: 
-      return <MasterSlaveRow data={row} options={options}/>
+      return <MasterSlaveRow {...commonProps} options={options}/>
 
     case CHECKLIST_ROW_TYPE_BATTERY_SPEC: 
-      return <BatteryInfoRow data={row} options={options}/>
+      return <BatteryInfoRow  {...commonProps} options={options}/>
       
     case CHECKLIST_ROW_TYPE_INSTRUM_MEASURES: 
-      return <InstrumMeasuresRow data={row} options={options}/>
+      return <InstrumMeasuresRow {...commonProps} options={options}/>
 
     case CHECKLIST_ROW_TYPE_POWER_SUPPLY_INFO: 
-      return <PowerSupplyRow data={row} options={options}/>
+      return <PowerSupplyRow {...commonProps} options={options}/>
 
     case CHECKLIST_ROW_TYPE_SUCTION_SYSTEM: 
-      return <SuctionSystemRow data={row} options={options}/>
+      return <SuctionSystemRow {...commonProps} options={options}/>
 
     case CHECKLIST_ROW_TYPE_DATE_NOTES: 
-      return <DateNoteRow data={row} options={options}/>
+      return <DateNoteRow {...commonProps} options={options}/>
 
     case CHECKLIST_ROW_TYPE_CONFIGURATION_LAN: 
-      return <ConfigurationLanRow data={row} options={options}/>
+      return <ConfigurationLanRow {...commonProps} options={options}/>
 
     case CHECKLIST_ROW_TYPE_TOGGLE_NULL_CONFIRM_QTY: 
-      return <ToggleConfirmRow data={row} options={options}/>
+      return <ToggleConfirmRow {...commonProps} options={{...options, hasNa: true, hasQuantity: true}}/>
 
     case CHECKLIST_ROW_TYPE_INFO_AND_PRECAUTIONS: 
-      return <InfoAndPrecautionsRow data={row} options={options}/>
+      return <InfoAndPrecautionsRow {...commonProps} options={options}/>
 
+    default: throw new Error(`[ChecklistsDetailsParagraphView::getRow] Invalid row type = ${row.rowType}.`);
   }
 };
 
-const ChecklistsDetailsParagraph = ({rows}) => {
+const ChecklistsDetailsParagraph = ({data}) => {
+  const {rows, order, name} = data;
   return (
-    <List>
-      {map((rowData) => getRow(rowData), rows)}
-    </List>
+    <div>
+      <HeaderH2 dimension={'h2'} text={`${order} - ${name}` }/>
+      <SyledList celled>
+        {map((rowData) => getRow(rowData), rows || [])}
+      </SyledList>
+    </div>
   )
 };
 
@@ -95,3 +112,4 @@ ChecklistsDetailsParagraph.propTypes = {
 };
 
 export default ChecklistsDetailsParagraph;
+

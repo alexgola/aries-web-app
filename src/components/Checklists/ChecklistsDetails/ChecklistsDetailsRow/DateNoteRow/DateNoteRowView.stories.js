@@ -5,10 +5,12 @@ import {List} from 'semantic-ui-react';
 import DateNoteRow from './DateNoteRowView';
 
 const data = {
-  description: "A list can contain a description",
+  description: 'A list can contain a description',
   data: {
-    date: 1526628401000, 
-    notes: "Individual properties of a shape, being shapes themselves."
+    nameValuePairs: {
+      date: 1526628401000, 
+      notes: "Individual properties of a shape, being shapes themselves."
+    }
   }, 
   employeeIndications: "Greenpoint's best choice for quick and delicious sushi."
 }

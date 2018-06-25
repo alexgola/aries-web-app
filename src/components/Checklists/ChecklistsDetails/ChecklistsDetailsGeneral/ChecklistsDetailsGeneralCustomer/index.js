@@ -1,0 +1,2 @@
+import ChecklistsDetailsGeneralCustomerView from './ChecklistsDetailsGeneralCustomerView'
+export default ChecklistsDetailsGeneralCustomerView

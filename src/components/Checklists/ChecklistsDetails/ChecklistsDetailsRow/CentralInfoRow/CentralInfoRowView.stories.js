@@ -8,12 +8,14 @@ import {MASTER_SLAVE_MASTER_VALUE} from '../consts'
 const data = {
   description: "A list can contain a description",
   data: {
-    brand: "Axel", 
-    model: "Venice Plus 9200", 
-    position: "Ala 2 settore 9", 
-    masterSlave: MASTER_SLAVE_MASTER_VALUE, 
-    slaveId: "Slave 19920",
-    notes: "Individual properties of a shape, being shapes themselves."
+    nameValuePairs: {
+      brand: "Axel", 
+      model: "Venice Plus 9200", 
+      position: "Ala 2 settore 9", 
+      masterSlave: MASTER_SLAVE_MASTER_VALUE, 
+      slaveId: "Slave 19920",
+      notes: "Individual properties of a shape, being shapes themselves."
+    }
   }, 
   employeeIndications: "Greenpoint's best choice for quick and delicious sushi."
 }

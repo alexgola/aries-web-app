@@ -46,7 +46,7 @@ export default createReducer({ ...initialState }, {
   [actionTypes.CHECKLIST_DETAIL_REQUEST](state, action){
     return { ...state,
       detail: {
-        ...state.checklists, 
+        ...state.detail, 
         loading: action.payload.loading,
       }
     }
@@ -54,9 +54,9 @@ export default createReducer({ ...initialState }, {
   [actionTypes.CHECKLIST_DETAIL_SUCCESS](state, action){
     return { ...state, 
       detail: {
-        ...state.checklists, 
+        ...state.detail, 
         loading: false,
-        data: action.payload,
+        data: action.payload.list && action.payload.list[0],
         error: null,
       }
     }
@@ -64,7 +64,7 @@ export default createReducer({ ...initialState }, {
   [actionTypes.CHECKLIST_DETAIL_FAILURE](state, action){
     return { ...state, 
       detail: {
-        ...state.checklists, 
+        ...state.detail, 
         loading: false,
         error: action.payload.error,
         data: null,

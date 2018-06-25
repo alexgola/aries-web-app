@@ -1,6 +1,7 @@
 import React from 'react';
 import { configure, setAddon, addDecorator } from '@storybook/react';
 import JSXAddon from 'storybook-addon-jsx';
+import { BrowserRouter } from 'react-router-dom'
 import { IntlProvider } from 'react-intl'
 import localeData from '../src/assets/locales/data.json'
 import monthsUtils from '../src/utils/months-utils'
@@ -21,9 +22,11 @@ setAddon(JSXAddon)
 
 function loadStories() {
   addDecorator(story => (
-    <IntlProvider locale={language} messages={messages}>
-        { story() }
-    </IntlProvider>
+    <BrowserRouter>
+      <IntlProvider locale={language} messages={messages}>
+          { story() }
+      </IntlProvider>
+    </BrowserRouter>
   ));
 
   req.keys().forEach((filename) => req(filename))

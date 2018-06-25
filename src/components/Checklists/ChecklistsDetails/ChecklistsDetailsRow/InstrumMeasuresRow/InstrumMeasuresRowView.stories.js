@@ -8,12 +8,14 @@ import {MASTER_SLAVE_MASTER_VALUE} from '../consts'
 const data = {
   description: "A list can contain a description",
   data: {
-    startVoltage: 120.01,
-    nextVoltage:  145.41,
-    restAbsorption: 150.00,
-    alarmAbsorption: 555.55,
-    hourAutonomy: 100,
-    notes: "Individual properties of a shape, being shapes themselves."
+    nameValuePairs: {
+      startVoltage: 120.01,
+      nextVoltage:  145.41,
+      restAbsorption: 150.00,
+      alarmAbsorption: 555.55,
+      hourAutonomy: 100,
+      notes: "Individual properties of a shape, being shapes themselves."
+    },
   }, 
   employeeIndications: "Greenpoint's best choice for quick and delicious sushi."
 }

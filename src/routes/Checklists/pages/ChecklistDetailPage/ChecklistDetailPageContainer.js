@@ -1,11 +1,11 @@
 import { connect } from 'react-redux'
 import ChecklistDetailPageView from './ChecklistDetailPageView'
-import {getChecklists, checklistDetail} from '../../modules/ChecklistsActions'
+import {checklistDetail} from '../../modules/ChecklistsActions'
 
 const mapStateToProps = (state) => {
   return {
     detail: {
-      isLoading: state.checklists.detail.loading,
+      isLoading: state.checklists.detail.loading || !state.checklists.detail.data,
       data: state.checklists.detail.data || null,
     }
   }

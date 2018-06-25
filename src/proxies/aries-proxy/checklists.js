@@ -7,9 +7,10 @@ module.exports.init = function(axios) {
     })
   }
   const getById = ({includes, id}) => {
-    return axios.get(`checklist/${id}`, {
+    return axios.get(`checklist`, {
       params: {
         includes,
+        id
       }
     })
   }

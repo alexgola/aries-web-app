@@ -1,5 +1,6 @@
 {
     "it": {
+        "CUSTOMER": "Cliente", 
         "WELCOME_TO_ARIES": "Benvenuto in Aries", 
         "USERNAME": "Username", 
         "PASSWORD": "Password", 
@@ -62,15 +63,19 @@
         "P2P": "P2P", 
         "INVALID_LOGIN_CREDENTIALS_MESSAGE": "Credenziali errate.",
         "UNEXPECTED_SERVER_ERROR_MESSAGE": "Errore imprevisto durante la communicazione con il server.",
-        "ADDRESS": "INDIRIZZO", 
+        "ADDRESS": "indirizzo", 
         "CITY": "Città", 
         "RESPONSIBLE": "Responsabile", 
         "TASK": "Mansione", 
         "SYSTEM_ID": "ID impianto", 
+        "SYSTEM": "Impianto", 
         "INSTALLED_ON": "Installato il",
         "INSTALLED_IN": "Installato in", 
         "VISIT_NUMBER": "Numero visita", 
         "PERIODIC_CHECK": "Controllo periodico", 
-        "TECHNICIANS": "Tecnici"
+        "TECHNICIANS": "Tecnici", 
+        "DEPARTMENTS": "Reparti",
+        "INVALID_MONTH": "Invalid month", 
+        "GENERAL_INFO": "Info generali"
     }
 }

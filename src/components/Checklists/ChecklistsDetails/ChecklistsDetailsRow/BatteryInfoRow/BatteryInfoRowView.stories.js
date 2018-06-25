@@ -8,11 +8,13 @@ import {MASTER_SLAVE_MASTER_VALUE} from '../consts'
 const data = {
   description: "A list can contain a description",
   data: {
-    year: 2000, 
-    month: 1, 
-    quantity: 10,
-    ampere: 10.50,
-    notes: "Individual properties of a shape, being shapes themselves."
+    nameValuePairs: {
+      year: 2000, 
+      month: 1, 
+      quantity: 10,
+      ampere: 10.50,
+      notes: "Individual properties of a shape, being shapes themselves."
+    }
   }, 
   employeeIndications: "Greenpoint's best choice for quick and delicious sushi."
 }

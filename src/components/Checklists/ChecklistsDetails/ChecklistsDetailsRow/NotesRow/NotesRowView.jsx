@@ -31,8 +31,9 @@ const NotesRowView = ({intl, data, onChange, options}) => {
           <TextArea
             autoHeight 
             value={notes}
-            fluid
+            fluid="true"
             onChange={(_, {value}) => handleChange({field: 'notes', value})}
+            readOnly={options.readonly}
           />
         </Form.Field>
       </NotesContainer>

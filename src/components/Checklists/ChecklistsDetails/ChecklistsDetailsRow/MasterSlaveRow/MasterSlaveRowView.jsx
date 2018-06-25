@@ -57,13 +57,13 @@ const MasterSlaveRow = ({intl, data, onChange, options}) => {
           <StyledRadio
             label={formatMessage(messages.master)}
             value={MASTER_SLAVE_MASTER_VALUE}
-            checked={masterSlave === MASTER_SLAVE_MASTER_VALUE}
+            checked={masterSlave == MASTER_SLAVE_MASTER_VALUE} //eslint-disable-line eqeqeq
           />
 
           <StyledRadio
             label={formatMessage(messages.slave)}
             value={MASTER_SLAVE_SLAVE_VALUE}
-            checked={masterSlave === MASTER_SLAVE_SLAVE_VALUE}
+            checked={masterSlave == MASTER_SLAVE_SLAVE_VALUE} //eslint-disable-line eqeqeq
           />
         </FormField>
         <Separator/>

@@ -25,7 +25,7 @@ instance.interceptors.request.use(function (req) {
 });
 
 instance.interceptors.response.use(function (resp) {
-  return apiObjToJsonObj(resp.data);
+  return apiObjToJsonObj(resp.data, ['nameValuePairs']);
 }, function (error) {
   const originalRequest = error.config;
   if(error.response.status === 401 && !originalRequest._retry){

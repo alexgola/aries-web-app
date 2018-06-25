@@ -9,7 +9,10 @@ export const dataShape = PropTypes.shape({
     password: PropTypes.string.isRequired,
     peerToPeer: PropTypes.bool.isRequired,
     peerToPeerNotes: PropTypes.string.isRequired,
-    snmpVersion: PropTypes.number.isRequired,
+    snmpVersion: PropTypes.oneOfType([
+        PropTypes.string,
+        PropTypes.number
+    ]).isRequired,
     ping: PropTypes.string.isRequired,
     ddnsServer: PropTypes.string.isRequired,
     ddnsUsername: PropTypes.string.isRequired,
