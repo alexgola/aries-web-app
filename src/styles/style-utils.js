@@ -1,19 +1,12 @@
 import styled, { css } from "styled-components";
-import Form from "./UI/Form";
-import { Header } from "./UI";
+import { Header, Form } from "../components/UI";
+import {LightBlue, DarkGrey, CollapsedGrey} from "./colors"
 
-const darkGrey = '#404040';
-const lightGrey = '#BCBDC1'
-
-// style-utils.js
-export function contentCnt() {
-  return `
-    max-width: 1280px;
-  `;
-}
+export const lightGrey = '#BCBDC1';
+export const navbarGrey = '#FAFAFA';
 
 export const ColorDarkGrey = css`
-  color: ${darkGrey}!important;
+  color: ${DarkGrey}!important;
 `
 
 export const ColorWhite = css`
@@ -29,15 +22,20 @@ export const BackgroundGreen = css`
 `
 
 export const BackgroundLightBlue = css`
-  background-color: #16AAF3;
+  background-color: ${LightBlue};
 `
 
 export const BackgroundDarkGrey = css`
-  background-color: ${darkGrey};
+  background-color: ${DarkGrey};
 `
 export const BackgroundLightGrey = css`
   background-color: ${lightGrey};
 `
+
+export const BackgroundNavbar = css`
+  background-color: ${navbarGrey};
+`
+
 const sizes = {
   desktop: 992,
   tablet: 768,
@@ -77,11 +75,22 @@ export const NoMarginBottom = css`
 `;
 
 export const HeaderH2 = styled(Header)`
-  ${BackgroundDarkGrey}
+  background-color: ${props => props.collapsable ? CollapsedGrey : DarkGrey};
+  cursor: ${props => props.collapsable ? 'pointer' : 'initial'};
   ${ColorWhite}
   ${CardPadding}
   ${NoMarginBottom}
   ${HeaderFontHeight}
   padding-top: 18px!important;
   padding-bottom: 18px!important;
+
+  &:hover{
+    ${BackgroundDarkGrey}
+  }
+`
+
+export const CenterVertically = css`
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
 `

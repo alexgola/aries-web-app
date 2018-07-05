@@ -28,6 +28,7 @@ function* doGetChecklistDetail({id}) {
   yield put({type: actionTypes.CHECKLIST_DETAIL_REQUEST, payload: { loading: true }})
   try {
     const resp = yield call(fetchChecklistDetail, id)
+
     yield put({type:  actionTypes.CHECKLIST_DETAIL_SUCCESS, payload: resp})
     return true;
   } catch (error) {

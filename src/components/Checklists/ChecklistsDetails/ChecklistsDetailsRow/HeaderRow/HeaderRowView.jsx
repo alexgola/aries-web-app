@@ -2,12 +2,13 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import {Header} from '../../../../UI'
-import {BackgroundLightGrey, ColorDarkGrey, HeaderFontHeight} from '../../../../style-utils'
-import {StyledItem} from '../CommonRowWrapper/CommonRowWrapperView'
+import {BackgroundLightGrey, ColorDarkGrey, HeaderFontHeight, CardPadding} from '../../../../../styles'
 
-const Container = styled(StyledItem)`
+const Container = styled.div`
   width: 100%;
   ${BackgroundLightGrey}
+  ${CardPadding}
+
 `
 
 const StyledHeader = styled(Header)`
@@ -15,17 +16,20 @@ const StyledHeader = styled(Header)`
   ${HeaderFontHeight}
 `
 
-const HeaderRow = ({text}) => {
+const HeaderRow = ({data}) => {
+  const {header} = data;
   return (
     <Container>
-      <StyledHeader text={text} dimension={'h3'} />
+      <StyledHeader text={header} dimension={'h3'} />
     </Container>
   )
 };
 
 // PropTypes
 HeaderRow.propTypes = {
-  text: PropTypes.string.isRequired, 
+  data: PropTypes.shape({
+    header: PropTypes.string.isRequired
+  }),
 };
 
 export default HeaderRow;

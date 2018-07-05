@@ -2,7 +2,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import {Switch, Route, Redirect, withRouter} from 'react-router-dom'
 import Login from './components/Login'
-import PrivateRouteView from './components/Routes/PrivateRoute';
+import PrivateAreaView from './components/PrivateArea';
+import PrivateRoute from './components/Routes/PrivateRoute';
 
 
 class AppRoutesComponent extends React.PureComponent {
@@ -16,12 +17,7 @@ class AppRoutesComponent extends React.PureComponent {
           ? null
           : <Redirect to='/login' />
         }
-        {
-          routes.routes.map(({ component, ...otherRouteProp }) => (
-            <PrivateRouteView isLogged={isLogged} key={otherRouteProp.path} path={otherRouteProp.path} component={component}/>
-          ))
-        }
-        <Redirect to='/checklists' />
+        <PrivateRoute isLogged={isLogged} path='/' component={PrivateAreaView} extProps={{routes}}></PrivateRoute>
       </Switch>)
   }
 }

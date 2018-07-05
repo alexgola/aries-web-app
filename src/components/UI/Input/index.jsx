@@ -1,14 +1,16 @@
 import React from 'react'
-import {Input} from 'semantic-ui-react'
+import {Input as SemanticInput} from 'semantic-ui-react'
+import styled from 'styled-components'
+import { Blue } from '../../../styles'
 
-class AriesInput extends React.Component {
-  render () {
-    const size = this.props.size || 'small'
-    
-    return (
-      <Input {...{...this.props, size}} />
-    )
+const StyledInput = styled(SemanticInput)`
+  input {
+    color: ${Blue}!important;
   }
-}
+`
 
-export default AriesInput
+export const Input = ({size, ...rest}) => {
+  return (
+    <StyledInput {...{...rest, size: size || 'small'}} />
+  )
+}

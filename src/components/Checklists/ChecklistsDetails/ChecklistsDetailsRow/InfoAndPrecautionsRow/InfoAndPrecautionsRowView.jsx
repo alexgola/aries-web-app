@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import {injectIntl, intlShape, defineMessages} from 'react-intl'
 import {Form, Checkbox} from '../../../../UI'
-import rowWrapper from '../CommonRowWrapper';
+import CommonRowWrapper from '../CommonRowWrapper';
 import {dataShape, optionsShape} from './prop-types'
 
 const MainContainer = styled(Form)`
@@ -48,4 +48,4 @@ DateNoteRow.propTypes = {
     intl: intlShape.isRequired,
 };
 
-export default rowWrapper(injectIntl(DateNoteRow));
+export default CommonRowWrapper(injectIntl(DateNoteRow));

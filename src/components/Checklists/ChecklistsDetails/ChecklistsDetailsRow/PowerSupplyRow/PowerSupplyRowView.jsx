@@ -2,11 +2,10 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import {injectIntl, intlShape, defineMessages} from 'react-intl'
-import Input from '../../../../UI/Input'
-import {Form} from '../../../../UI'
-import rowWrapper from '../CommonRowWrapper';
+import {Form, Input} from '../../../../UI'
+import CommonRowWrapper from '../CommonRowWrapper';
 import {dataShape, optionsShape} from './prop-types'
-import {media} from '../../../../style-utils'
+import {media} from '../../../../../styles'
 
 
 const MainContainer = styled(Form)`
@@ -105,4 +104,4 @@ CentralInfoRow.propTypes = {
     intl: intlShape.isRequired,
 };
 
-export default rowWrapper(injectIntl(CentralInfoRow));
+export default CommonRowWrapper(injectIntl(CentralInfoRow));

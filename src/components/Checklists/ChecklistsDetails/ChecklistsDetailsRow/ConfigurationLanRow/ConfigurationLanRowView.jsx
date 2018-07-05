@@ -3,10 +3,10 @@ import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import {injectIntl, intlShape, defineMessages} from 'react-intl'
 import {Form, Radio, Checkbox, Input} from '../../../../UI'
-import rowWrapper from '../CommonRowWrapper';
+import CommonRowWrapper from '../CommonRowWrapper';
 import {SNPM_VERSION_1, SNPM_VERSION_2, SNPM_VERSION_3} from '../consts';
 import {dataShape, optionsShape} from './prop-types'
-import {media} from '../../../../style-utils'
+import {media} from '../../../../../styles'
 
 
 const MainContainer = styled(Form)`
@@ -221,4 +221,4 @@ ConfigurationLanRow.propTypes = {
     intl: intlShape.isRequired,
 };
 
-export default rowWrapper(injectIntl(ConfigurationLanRow));
+export default CommonRowWrapper(injectIntl(ConfigurationLanRow));

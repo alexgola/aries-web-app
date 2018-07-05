@@ -3,10 +3,11 @@ import ChecklistDetailPageView from './ChecklistDetailPageView'
 import {checklistDetail} from '../../modules/ChecklistsActions'
 
 const mapStateToProps = (state) => {
+  const data = state.checklists.detail.data
   return {
     detail: {
-      isLoading: state.checklists.detail.loading || !state.checklists.detail.data,
-      data: state.checklists.detail.data || null,
+      isLoading: !!(state.checklists.detail.loading || !data),
+      paragraphsLength: (data ? data.paragraphs : []).length
     }
   }
 }

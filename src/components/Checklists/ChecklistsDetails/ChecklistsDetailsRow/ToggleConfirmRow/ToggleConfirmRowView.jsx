@@ -2,10 +2,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import {injectIntl, intlShape, defineMessages} from 'react-intl'
-import Radio from '../../../../UI/Radio'
-import Input from '../../../../UI/Input'
-import {Form} from '../../../../UI'
-import rowWrapper from '../CommonRowWrapper';
+import {Form, Input, Radio} from '../../../../UI'
+import CommonRowWrapper from '../CommonRowWrapper';
 import {TOGGLE_CONFIRM_NO_VALUE, TOGGLE_CONFIRM_YES_VALUE, TOGGLE_CONFIRM_NA_VALUE} from '../consts';
 import {dataShape, optionsShape} from './prop-types'
 
@@ -56,12 +54,14 @@ const ToggleConfirmRow = ({intl, data, onChange, options}) => {
     <div>
       <Group>
         <StyledRadio
+          positive="true"
           label={formatMessage(messages.yes)}
           value={TOGGLE_CONFIRM_YES_VALUE}
           checked={value == TOGGLE_CONFIRM_YES_VALUE} //eslint-disable-line eqeqeq
           onChange={(_, {value}) => handleChange({field: 'value', value})}
         />
         <StyledRadio
+          negative="true"
           label={formatMessage(messages.no)}
           value={TOGGLE_CONFIRM_NO_VALUE}
           checked={value == TOGGLE_CONFIRM_NO_VALUE} //eslint-disable-line eqeqeq
@@ -114,4 +114,4 @@ ToggleConfirmRow.propTypes = {
     intl: intlShape.isRequired,
 };
 
-export default rowWrapper(injectIntl(ToggleConfirmRow));
+export default CommonRowWrapper(injectIntl(ToggleConfirmRow));

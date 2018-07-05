@@ -1,5 +1,5 @@
 import React from 'react'
-import {map} from 'ramda'
+import PropTypes from 'prop-types'
 import {
   CHECKLIST_ROW_TYPE_TOGGLE_CONFIRM,
   CHECKLIST_ROW_TYPE_TOGGLE_NULL_CONFIRM,
@@ -32,20 +32,18 @@ import {
 } from '../ChecklistsDetailsRow';
 import {List} from '../../../UI';
 import styled from 'styled-components';
-import {NoMarginTop, HeaderH2 } from '../../../style-utils';
+import { NoMarginTop, HeaderH2 } from '../../../../styles';
 
 const SyledList = styled(List)`
   ${NoMarginTop}
 `
-const getRow = (row) => {
+const SwitchedRow = ({row, rowIndex, paragraphIndex}) => {
   const options = {readonly: false};
-  const key = `checklist_row_${row.paragraphId}_${row.id}`;
-  const onChange = () => {};
-  
-  const commonProps = {
-    key, 
-    data: row, 
-    onChange,
+
+  const commonProps = { 
+    data: row,
+    rowIndex, 
+    paragraphIndex,
   }
 
   switch(row.rowType) {
@@ -59,7 +57,7 @@ const getRow = (row) => {
       return <NotesRow {...commonProps} options={options}/>
 
     case CHECKLIST_ROW_TYPE_HEADER: 
-      return <HeaderRow {...commonProps} text={(row.data.nameValuePairs).header} options={options}/>
+      return <HeaderRow  {...commonProps} options={options}/>
 
     case CHECKLIST_ROW_TYPE_CENTRAL_INFO: 
       return <CentralInfoRow {...commonProps} options={options}/>
@@ -95,13 +93,21 @@ const getRow = (row) => {
   }
 };
 
-const ChecklistsDetailsParagraph = ({data}) => {
-  const {rows, order, name} = data;
+const ChecklistsDetailsParagraph = ({data, changeIsCollapsedStatus, paragraphIndex}) => {
+  const {rows, order, name, isCollapsed} = data;
   return (
     <div>
-      <HeaderH2 dimension={'h2'} text={`${order} - ${name}` }/>
-      <SyledList celled>
-        {map((rowData) => getRow(rowData), rows || [])}
+      <HeaderH2 
+        collapsable={"true"} 
+        dimension={'h2'} 
+        text={`${order} - ${name}` }
+        onClick={() => changeIsCollapsedStatus({value: !isCollapsed, paragraphIndex})}/>
+      <SyledList 
+        celled
+        isCollapsed={!!isCollapsed}>
+        {rows.map((row, index)=> {
+          return <SwitchedRow paragraphIndex={paragraphIndex} rowIndex={index} key={`checklist_row_${row.paragraphId}_${row.id}`} row={row}/>
+        })}
       </SyledList>
     </div>
   )
@@ -109,6 +115,9 @@ const ChecklistsDetailsParagraph = ({data}) => {
 
 // PropTypes
 ChecklistsDetailsParagraph.propTypes = {
+  data: PropTypes.object.isRequired, 
+  changeIsCollapsedStatus: PropTypes.func.isRequired,
+  paragraphIndex: PropTypes.number.isRequired,
 };
 
 export default ChecklistsDetailsParagraph;

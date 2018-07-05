@@ -2,12 +2,11 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import {injectIntl, intlShape, defineMessages} from 'react-intl'
-import Input from '../../../../UI/Input'
-import {Form, Radio} from '../../../../UI'
-import rowWrapper from '../CommonRowWrapper';
+import {Form, Radio, Input} from '../../../../UI'
+import CommonRowWrapper from '../CommonRowWrapper';
 import {SUCTION_SYSTEM_TYPE_HIGH_SENSITIVITY, SUCTION_SYSTEM_TYPE_NORMAL, SUCTION_SYSTEM_TYPE_LASER} from '../consts';
 import {dataShape, optionsShape} from './prop-types'
-import {media} from '../../../../style-utils'
+import {media} from '../../../../../styles'
 
 
 const MainContainer = styled(Form)`
@@ -138,4 +137,4 @@ SuctionSystemRow.propTypes = {
     intl: intlShape.isRequired,
 };
 
-export default rowWrapper(injectIntl(SuctionSystemRow));
+export default CommonRowWrapper(injectIntl(SuctionSystemRow));

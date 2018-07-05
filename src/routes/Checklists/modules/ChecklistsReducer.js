@@ -11,6 +11,7 @@ const initialState = {
     loading: false,
     error: null,
     data: null,
+    edit: false,
   }
 }
 
@@ -52,11 +53,17 @@ export default createReducer({ ...initialState }, {
     }
   },
   [actionTypes.CHECKLIST_DETAIL_SUCCESS](state, action){
+    const checklist = action.payload.list && action.payload.list[0];
+    if(checklist) {
+      checklist.isGeneralInfoCollapsed = true
+      checklist.paragraphs = checklist.paragraphs.map(paragraph => ({...paragraph, isCollapsed: true}))
+    }
+
     return { ...state, 
       detail: {
         ...state.detail, 
         loading: false,
-        data: action.payload.list && action.payload.list[0],
+        data: checklist,
         error: null,
       }
     }
@@ -68,6 +75,47 @@ export default createReducer({ ...initialState }, {
         loading: false,
         error: action.payload.error,
         data: null,
+      }
+    }
+  },
+  [actionTypes.CHECKLIST_DETAIL_PARAGRAPH_COLLAPSE](state, action){
+    const {value, paragraphIndex} = action.payload;
+    return { ...state, 
+      detail: {
+        ...state.detail, 
+        data: {
+          ...state.detail.data, 
+          paragraphs: state.detail.data.paragraphs.map((el, index) => index === paragraphIndex ? {...el, isCollapsed: value} : el)
+        }
+      }
+    }
+  },  
+  [actionTypes.CHECKLIST_DETAIL_GENERAL_INFO_COLLAPSE](state, action){
+    const {value} = action.payload;
+    return { ...state, 
+      detail: {
+        ...state.detail, 
+        data: {
+          ...state.detail.data, 
+          isGeneralInfoCollapsed: value,
+        }
+      }
+    }
+  }, 
+  [actionTypes.CHECKLIST_DETAIL_UPDATE_ROW_DATA](state, action){
+    const {value, paragraphIndex, rowIndex} = action.payload;
+    return { ...state, 
+      detail: {
+        ...state.detail, 
+        data: {
+          ...state.detail.data, 
+          paragraphs: state.detail.data.paragraphs.map((el, index) => index === paragraphIndex 
+            ? {
+              ...el,
+              rows: el.rows.map((row, rIndex) => rIndex === rowIndex ? {...row, data: value} : row)
+            } 
+            : el)
+        }
       }
     }
   },

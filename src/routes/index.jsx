@@ -11,7 +11,7 @@ export const createRoutes = store => ({
   routes: [
     createRouteObj({
       path: '/checklists',
-      exact: true,
+      exact: false,
       component: asyncComponent(() => import('./Checklists').then(module => module.default(store))),
     }),
   ],

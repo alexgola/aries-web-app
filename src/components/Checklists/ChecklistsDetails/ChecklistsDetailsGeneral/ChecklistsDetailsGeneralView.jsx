@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import {injectIntl, intlShape, defineMessages} from 'react-intl'
 import ChecklistsDetailsGeneralCustomerView from './ChecklistsDetailsGeneralCustomer'
 import ChecklistsDetailsGeneralSystemView from './ChecklistsDetailsGeneralSystem'
-import { HeaderH2 } from '../../../style-utils';
+import { HeaderH2 } from '../../../../styles';
 
 const messages = defineMessages({
   generalInfo: { id: 'GENERAL_INFO' },
@@ -14,20 +14,42 @@ const MainContainer = styled.div`
 
 `
 
-const ChecklistsDetailsGeneral = ({intl, checklist, options}) => {
+const Content = styled.div`
+  transition: height 1s ease;
+  overflow: hidden;
+`;
+
+const CollapsedContent = styled(Content)`
+  height: 0px;
+`
+
+const ExpandedContent = styled(Content)`
+  height: auto;
+`
+
+const ChecklistsDetailsGeneral = ({intl, isGeneralInfoCollapsed, options, changeIsCollapsedStatus}) => {
   const {formatMessage} = intl
+  const MyContent = isGeneralInfoCollapsed ? CollapsedContent : ExpandedContent
   return (
     <MainContainer>
-      <HeaderH2 dimension={'h2'} text={`${formatMessage(messages.generalInfo)}` }/>
-      <ChecklistsDetailsGeneralCustomerView checklist={checklist} options={options}/>
-      <ChecklistsDetailsGeneralSystemView checklist={checklist} options={options}/>
+      <HeaderH2 
+        collapsable={"true"}  
+        dimension={'h2'} 
+        text={`${formatMessage(messages.generalInfo)}` }
+        onClick={() => changeIsCollapsedStatus({value: !isGeneralInfoCollapsed})}/>
+      <MyContent>
+        <ChecklistsDetailsGeneralCustomerView options={options}/>
+        <ChecklistsDetailsGeneralSystemView options={options}/>
+      </MyContent>
     </MainContainer>
   )
 };
 
 // PropTypes
 ChecklistsDetailsGeneral.propTypes = {
-  checklist: PropTypes.object.isRequired,
+  isGeneralInfoCollapsed: PropTypes.bool.isRequired,
+  changeIsCollapsedStatus: PropTypes.func.isRequired, 
+  intl: PropTypes.object.isRequired
 };
 
 export default injectIntl(ChecklistsDetailsGeneral);

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import {injectIntl, intlShape, defineMessages} from 'react-intl'
 import {Form, TextArea} from '../../../../UI'
-import rowWrapper from '../CommonRowWrapper'
+import CommonRowWrapper from '../CommonRowWrapper'
 import {dataShape, optionsShape} from './prop-types'
 
 const NotesContainer = styled(Form)`
@@ -49,4 +49,4 @@ NotesRowView.propTypes = {
     intl: intlShape.isRequired,
 };
 
-export default rowWrapper(injectIntl(NotesRowView));
+export default CommonRowWrapper(injectIntl(NotesRowView));

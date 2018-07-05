@@ -1,9 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import ChecklistsDetailsGeneral from '../../../../components/Checklists/ChecklistsDetails/ChecklistsDetailsGeneral/ChecklistsDetailsGeneralView';
+import ChecklistsDetailsGeneral from '../../../../components/Checklists/ChecklistsDetails/ChecklistsDetailsGeneral';
 import { Dimmer, Loader } from '../../../../components/UI';
-import {map} from 'ramda'
-import ChecklistsDetailsParagraph from '../../../../components/Checklists/ChecklistsDetails/ChecklistsDetailsParagraph/ChecklistsDetailsParagraphView';
+import ChecklistsDetailsParagraph from '../../../../components/Checklists/ChecklistsDetails/ChecklistsDetailsParagraph';
+import { PageContent } from '../../../../styles';
+import ChecklistActionsBar from '../../../../components/Checklists/ChecklistsDetails/ChecklistActionsBar';
+
 
 class ChecklistDetailPageView extends React.PureComponent {
   componentDidMount () {
@@ -11,7 +13,7 @@ class ChecklistDetailPageView extends React.PureComponent {
     this.props.getChecklistDetail(id)
   }
   render () {
-    const {data, isLoading} = this.props.detail
+    const {isLoading, paragraphsLength} = this.props.detail
     
     if(isLoading) {
       return (
@@ -22,18 +24,22 @@ class ChecklistDetailPageView extends React.PureComponent {
     }
 
     return (
-      <div>
-        <ChecklistsDetailsGeneral checklist={data}/> 
-        ${map(item => {
-          return <ChecklistsDetailsParagraph key={`checklist_paragraph_${item.id}`} data={item}/> 
-        }, data.paragraphs)}
-      </div>
+      <PageContent>
+        <ChecklistActionsBar />
+        <ChecklistsDetailsGeneral/> 
+        {Array.apply(null, {length: paragraphsLength}).map((_, index)=> {
+          return <ChecklistsDetailsParagraph key={`checklist_paragraph_${index}`} paragraphIndex={index}/> 
+        })}
+      </PageContent>
     )
   }
 }
 
 ChecklistDetailPageView.propTypes = {
-  data: PropTypes.object, 
+  detail: PropTypes.shape({
+    isLoading: PropTypes.bool.isRequired,
+    paragraphsLength: PropTypes.number,
+  }),
 }
 
 export default ChecklistDetailPageView

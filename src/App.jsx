@@ -60,11 +60,6 @@ class App extends React.PureComponent {
 };
 
 App.propTypes = {  
-  routes: PropTypes.objectOf(PropTypes.arrayOf(PropTypes.shape({
-    path: PropTypes.string.isRequired,
-    exact: PropTypes.bool.isRequired,
-    component: PropTypes.func.isRequired,
-  }))).isRequired,
   autoLogin: PropTypes.func.isRequired, 
   resetLoginError: PropTypes.func.isRequired,
 }

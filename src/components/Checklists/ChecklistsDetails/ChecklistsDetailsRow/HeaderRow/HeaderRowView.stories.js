@@ -11,6 +11,6 @@ storiesOf('Checklists', module)
         </List>
     ))
     .addWithJSX('Details Row - Header', () =>  
-      <HeaderRow text={"Header testing"} />);
+      <HeaderRow data={{header: "Header testing"}} />);
 
 

@@ -1,2 +1,2 @@
-import ChecklistsDetailsGeneralCustomerView from './ChecklistsDetailsGeneralCustomerView'
-export default ChecklistsDetailsGeneralCustomerView
+import ChecklistsDetailsGeneralCustomer from './ChecklistsDetailsGeneralCustomerContainer'
+export default ChecklistsDetailsGeneralCustomer

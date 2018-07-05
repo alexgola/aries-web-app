@@ -1,2 +1,2 @@
-import CommonRowWrapper from './CommonRowWrapperView'
-export default CommonRowWrapper
+import CommontRowWrapper from './CommontRowWrapperContainer'
+export default CommontRowWrapper

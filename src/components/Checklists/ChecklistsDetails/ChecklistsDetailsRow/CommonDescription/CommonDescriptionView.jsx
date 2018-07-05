@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import List from '../../../../UI/List'
+import {List} from '../../../../UI'
 
 const CommonDescription = ({value}) => {
   return (

@@ -1,2 +1,2 @@
-import ChecklistsDetailsGeneralView from './ChecklistsDetailsGeneralView'
-export default ChecklistsDetailsGeneralView
+import ChecklistsDetailsGeneraContainer from './ChecklistsDetailsGeneralContainer'
+export default ChecklistsDetailsGeneraContainer

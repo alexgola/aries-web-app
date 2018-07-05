@@ -3,11 +3,9 @@ import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import {injectIntl, intlShape, defineMessages} from 'react-intl'
 import {withRouter} from 'react-router-dom'
-import Header from '../UI/Header'
-import Icon from '../UI/Icon'
-import Input from '../UI/Input'
+import {Icon} from '../UI'
 import PrimaryButton from '../UI/PrimaryButton'
-import { Message, Form } from '../UI';
+import { Message, Form, Input, Header} from '../UI';
 
 const messages = defineMessages({
   welcome: {id: 'WELCOME_TO_ARIES'},

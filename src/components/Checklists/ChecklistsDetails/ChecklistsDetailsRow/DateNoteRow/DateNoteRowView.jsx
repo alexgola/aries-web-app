@@ -4,9 +4,9 @@ import styled from 'styled-components'
 import {injectIntl, intlShape, defineMessages} from 'react-intl'
 import Input from '../../../../UI/Input'
 import {Form} from '../../../../UI'
-import rowWrapper from '../CommonRowWrapper';
+import CommonRowWrapper from '../CommonRowWrapper';
 import {dataShape, optionsShape} from './prop-types'
-import {media} from '../../../../style-utils'
+import {media} from '../../../../../styles'
 import { getDateByUnixtimestamp } from '../../../../../utils/datetime-utils';
 
 
@@ -90,4 +90,4 @@ DateNoteRow.propTypes = {
     intl: intlShape.isRequired,
 };
 
-export default rowWrapper(injectIntl(DateNoteRow));
+export default CommonRowWrapper(injectIntl(DateNoteRow));

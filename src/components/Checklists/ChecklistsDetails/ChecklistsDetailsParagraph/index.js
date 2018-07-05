@@ -1,2 +1,2 @@
-import ChecklistsDetailsParagraphView from './ChecklistsDetailsParagraphView'
-export default ChecklistsDetailsParagraphView
+import ChecklistsDetailsParagraph from './ChecklistsDetailsParagraphContainer'
+export default ChecklistsDetailsParagraph

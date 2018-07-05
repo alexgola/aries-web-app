@@ -1,2 +1,2 @@
-import HeaderRow from './HeaderRowView'
+import HeaderRow from './HeaderRowContainer'
 export default HeaderRow

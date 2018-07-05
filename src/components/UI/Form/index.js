@@ -1,2 +1,2 @@
-import {Form} from 'semantic-ui-react'
-export default Form
+import {Form as SemanticForm} from 'semantic-ui-react'
+export const Form = SemanticForm

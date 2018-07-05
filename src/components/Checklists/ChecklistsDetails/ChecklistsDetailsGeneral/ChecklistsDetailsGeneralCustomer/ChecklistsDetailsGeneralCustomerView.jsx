@@ -3,8 +3,8 @@ import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import {defineMessages, injectIntl} from 'react-intl'
 import {Input, Form} from '../../../../UI'
-import {media, FormCard} from '../../../../style-utils'
-import HeaderRow from '../../ChecklistsDetailsRow/HeaderRow'
+import {media, FormCard} from '../../../../../styles'
+import HeaderRow from '../../ChecklistsDetailsRow/HeaderRow/HeaderRowView'
 
 const messages = defineMessages({
   customer: { id: 'CUSTOMER' },
@@ -49,47 +49,56 @@ const TabletSeparator = styled(DesktopSeparator)`
 
 const FormWrapper = FormCard;
 
-const ChecklistsDetailsGeneralCustomer = ({checklist, intl, options}) => {
+const ChecklistsDetailsGeneralCustomer = ({data, intl, options}) => {
+
   const {formatMessage} = intl
   const readonly = (options && options.readonly) || false
+  const {
+    responsableJob, 
+    customerName, 
+    customerAddress, 
+    customerCity, 
+    responsableName, 
+    customerId
+  } = data;
 
   return (
     <MainContainer>
-      <HeaderRow text={`${formatMessage(messages.customer)} - ${checklist.customerId}`}/>
+      <HeaderRow data={{header: `${formatMessage(messages.customer)} - ${customerId}`}}/>
       <FormWrapper>
         <FormField>
           <label>{formatMessage(messages.customerName)}</label>
           <Input 
             readOnly={readonly}            
-            value={checklist.customerName}
+            value={customerName}
             type='text' />
         </FormField>
         <TabletSeparator/>
         <FormField>
           <label>{formatMessage(messages.customerAddress)}</label>
           <Input               
-            value={checklist.customerAddress}
+            value={customerAddress}
             type='text' />
         </FormField>       
         <TabletSeparator/>
         <FormField>
           <label>{formatMessage(messages.customerCity)}</label>
           <Input               
-            value={checklist.customerCity}
+            value={customerCity}
             type='text' />
         </FormField>   
         <DesktopSeparator/>     
         <FormField>
           <label>{formatMessage(messages.responsible)}</label>
           <Input               
-            value={checklist.responsableName || ''}
+            value={responsableName || ''}
             type='text' />
         </FormField>       
         <TabletSeparator/>
         <FormField>
           <label>{formatMessage(messages.task)}</label>
           <Input               
-            value={checklist.responsableJob || ''}
+            value={responsableJob || ''}
             type='text' />
         </FormField>
       </FormWrapper>
@@ -99,8 +108,15 @@ const ChecklistsDetailsGeneralCustomer = ({checklist, intl, options}) => {
 
 // PropTypes
 ChecklistsDetailsGeneralCustomer.propTypes = {
-  checklist: PropTypes.object.isRequired,
   intl: PropTypes.object.isRequired,
+  data: PropTypes.shape({
+    responsableJob: PropTypes.string, 
+    customerName: PropTypes.string.isRequired,
+    customerAddress: PropTypes.string.isRequired,
+    customerCity: PropTypes.string.isRequired,
+    responsableName: PropTypes.string,
+    customerId: PropTypes.number.isRequired,
+  })
 };
 
 export default injectIntl(ChecklistsDetailsGeneralCustomer);

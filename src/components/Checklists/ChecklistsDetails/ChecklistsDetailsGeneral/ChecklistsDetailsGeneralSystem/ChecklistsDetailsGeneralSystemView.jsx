@@ -3,8 +3,8 @@ import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import {defineMessages, injectIntl} from 'react-intl'
 import {Input, Form} from '../../../../UI'
-import {media, FormCard} from '../../../../style-utils'
-import HeaderRow from '../../ChecklistsDetailsRow/HeaderRow'
+import {media, FormCard} from '../../../../../styles'
+import HeaderRow from '../../ChecklistsDetailsRow/HeaderRow/HeaderRowView'
 import AriesDate from '../../../../UI/AriesDate';
 
 const messages = defineMessages({
@@ -66,61 +66,71 @@ const OnlyTabletSeparator = styled(DesktopSeparator)`
 const FormWrapper = FormCard
 
 
-const ChecklsitsDetailsGeneralSystem = ({checklist, intl, options}) => {
+const ChecklistsDetailsGeneralSystem = ({data, intl, options}) => {
   const {formatMessage} = intl
   const readonly = (options && options.readonly) || false
+  const {
+    systemId,
+    description, 
+    systemCentral, 
+    systemInstalledDate, 
+    systemInstalledPlace, 
+    visitNumber, 
+    periodicCheck, 
+    systemDepartments,
+  } = data;
 
   return (
     <MainContainer>
-      <HeaderRow text={`${formatMessage(messages.system)} - ${checklist.systemId}`}/>
+      <HeaderRow data={{header: `${formatMessage(messages.system)} - ${systemId}`}}/>
       <FormWrapper>
         <FormField>
           <label>{formatMessage(messages.description)}</label>
           <Input 
             readOnly={readonly}            
-            value={checklist.system.description}
+            value={description}
             type='text' />
         </FormField>
         <TabletSeparator/>
         <FormField>
           <label>{formatMessage(messages.central)}</label>
           <Input               
-            value={checklist.systemCentral || ''}
+            value={systemCentral || ''}
             type='text' />
         </FormField>       
         <TabletSeparator/>
         <FormField>
           <label>{formatMessage(messages.installedOn)}</label>
           <Input               
-            value={checklist.systemInstalledDate ? AriesDate({unixTimestamp: checklist.systemInstalledDate}) : ''}
+            value={systemInstalledDate ? AriesDate({unixTimestamp: systemInstalledDate}) : ''}
             type='text' />
         </FormField>  
         <DesktopSeparator/>      
         <FormField>
           <label>{formatMessage(messages.installedIn)}</label>
           <Input               
-            value={checklist.systemInstalledPlace || ''}
+            value={systemInstalledPlace || ''}
             type='text' />
         </FormField>       
         <TabletSeparator/>
         <FormField>
           <label>{formatMessage(messages.visitNumber)}</label>
           <Input               
-            value={checklist.visitNumber || ''}
+            value={visitNumber || ''}
             type='text' />
         </FormField>
         <OnlyTabletSeparator/>
         <FormField>
           <label>{formatMessage(messages.periodicCheck)}</label>
           <Input               
-            value={checklist.periodicCheck || ''}
+            value={periodicCheck || ''}
             type='text' />
         </FormField>
         <DesktopSeparator/>  
         <FormField>
           <label>{formatMessage(messages.departments)}</label>
           <Input               
-            value={checklist.systemDepartments || ''}
+            value={systemDepartments || ''}
             type='text' />
         </FormField>
       </FormWrapper>
@@ -129,9 +139,18 @@ const ChecklsitsDetailsGeneralSystem = ({checklist, intl, options}) => {
 };
 
 // PropTypes
-ChecklsitsDetailsGeneralSystem.propTypes = {
-  checklist: PropTypes.object.isRequired,
+ChecklistsDetailsGeneralSystem.propTypes = {
+  data: PropTypes.shape({
+    systemId: PropTypes.number.isRequired,
+    description: PropTypes.string.isRequired,
+    systemCentral: PropTypes.string,
+    systemInstalledDate: PropTypes.number,
+    systemInstalledPlace: PropTypes.string,
+    visitNumber: PropTypes.number,
+    periodicCheck: PropTypes.number,
+    systemDepartments: PropTypes.string,
+  }),
   intl: PropTypes.object.isRequired,
 };
 
-export default injectIntl(ChecklsitsDetailsGeneralSystem);
+export default injectIntl(ChecklistsDetailsGeneralSystem);

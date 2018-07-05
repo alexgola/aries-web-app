@@ -1,8 +1,6 @@
 import React from 'react'
-import { Icon } from 'semantic-ui-react'
+import { Icon as SemanticIcon } from 'semantic-ui-react'
 
-const AriesIcon = ({name, size}) => (
-  <Icon name={name} size={size} />
-)
-
-export default AriesIcon
+export const Icon = ({name, size}) => (
+  <SemanticIcon name={name} size={size} />
+);
