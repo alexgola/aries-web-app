@@ -6,7 +6,6 @@ import ChecklistsDetailsParagraph from '../../../../components/Checklists/Checkl
 import { PageContent } from '../../../../styles';
 import ChecklistActionsBar from '../../../../components/Checklists/ChecklistsDetails/ChecklistActionsBar';
 
-
 class ChecklistDetailPageView extends React.PureComponent {
   componentDidMount () {
     const {id} = this.props.match.params
@@ -26,10 +25,12 @@ class ChecklistDetailPageView extends React.PureComponent {
     return (
       <PageContent>
         <ChecklistActionsBar />
-        <ChecklistsDetailsGeneral/> 
-        {Array.apply(null, {length: paragraphsLength}).map((_, index)=> {
-          return <ChecklistsDetailsParagraph key={`checklist_paragraph_${index}`} paragraphIndex={index}/> 
-        })}
+        <div className='content'>
+          <ChecklistsDetailsGeneral/> 
+          {Array.apply(null, {length: paragraphsLength}).map((_, index)=> {
+            return <ChecklistsDetailsParagraph key={`checklist_paragraph_${index}`} paragraphIndex={index}/> 
+          })}
+        </div>
       </PageContent>
     )
   }

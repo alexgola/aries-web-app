@@ -1,1 +1,1 @@
-export const ICON_EDIT_REF = 'pencil alternate';
+export const ICON_EDIT_REF = 'pencil';

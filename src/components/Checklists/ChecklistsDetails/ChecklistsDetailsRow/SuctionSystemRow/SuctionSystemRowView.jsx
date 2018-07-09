@@ -59,11 +59,7 @@ const messages = defineMessages({
 const SuctionSystemRow = ({intl, data, onChange, options}) => {
   const {formatMessage} = intl
   const {suctionSystemType, sensorNumber, brand, model, position, notes} = data
-
-  const handleChange = ({field, value}) => {
-    data[field] = value;
-    onChange(data);
-  }
+  const {editMode} = options
 
   return (
     <div>
@@ -73,18 +69,24 @@ const SuctionSystemRow = ({intl, data, onChange, options}) => {
             label={formatMessage(messages.normal)}
             value={SUCTION_SYSTEM_TYPE_NORMAL}
             checked={suctionSystemType == SUCTION_SYSTEM_TYPE_NORMAL} //eslint-disable-line eqeqeq
+            onChange={(_, {value}) => onChange({field: 'suctionSystemType', value, type: 'radio'})}
+            readOnly={!editMode}
           />
 
           <StyledRadio
             label={formatMessage(messages.highSensitivity)}
             value={SUCTION_SYSTEM_TYPE_HIGH_SENSITIVITY}
             checked={suctionSystemType == SUCTION_SYSTEM_TYPE_HIGH_SENSITIVITY} //eslint-disable-line eqeqeq
+            onChange={(_, {value}) => onChange({field: 'suctionSystemType', value, type: 'radio'})}
+            readOnly={!editMode}
           />
 
           <StyledRadio
             label={formatMessage(messages.laser)}
             value={SUCTION_SYSTEM_TYPE_LASER}
             checked={suctionSystemType == SUCTION_SYSTEM_TYPE_LASER} //eslint-disable-line eqeqeq
+            onChange={(_, {value}) => onChange({field: 'suctionSystemType', value, type: 'radio'})}
+            readOnly={!editMode}
           />
         </RadioGroupField>
         <Separator/>
@@ -92,36 +94,50 @@ const SuctionSystemRow = ({intl, data, onChange, options}) => {
           <label>{formatMessage(messages.sensorNumber)}</label>
           <Input            
             value={sensorNumber}
-            type='text' />
+            type='text'
+            onChange={(_, {value}) => onChange({field: 'sensorNumber', value, type: 'string'})}
+            readOnly={!editMode}
+          />
         </FormField>
 
         <FormField>
           <label>{formatMessage(messages.brand)}</label>
           <Input            
             value={brand}
-            type='text' />
+            type='text'
+            onChange={(_, {value}) => onChange({field: 'brand', value, type: 'string'})}
+            readOnly={!editMode}
+          />
         </FormField>
         <Separator/>
         <FormField>
           <label>{formatMessage(messages.model)}</label>
           <Input               
             value={model}
-            type='text' />
+            type='text'
+            onChange={(_, {value}) => onChange({field: 'model', value, type: 'string'})}
+            readOnly={!editMode}
+          />
         </FormField>
         <Separator/>
         <FormField>
           <label>{formatMessage(messages.position)}</label>
           <Input               
             value={position}
-            type='text' />
+            type='text' 
+            onChange={(_, {value}) => onChange({field: 'position', value, type: 'string'})}
+            readOnly={!editMode}
+          />
         </FormField>
 
         <NotesFormField>
           <label>{formatMessage(messages.note)}</label>
           <Input 
             value={notes}
+            type='text'
             fluid
-            onChange={(_, {value}) => handleChange({field: 'notes', value})}
+            onChange={(_, {value}) => onChange({field: 'notes', value, type: 'string'})}
+            readOnly={!editMode}
           />
         </NotesFormField>
       </MainContainer>

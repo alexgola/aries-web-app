@@ -20,20 +20,19 @@ const messages = defineMessages({
   checkoutlistPrecautionsText: { id: 'CHECKLIST_PREACUTIONS_TEXT' },
 })
 
-const DateNoteRow = ({intl, data, onChange, options}) => {
+const InfoAndPrecautionsRowView = ({intl, data}) => {
   const {formatMessage} = intl
   const {value} = data
-
-  const handleChange = ({field, value}) => {
-    data[field] = value;
-    onChange(data);
-  }
 
   return (
     <div>
       <MainContainer>
         <FormField>
-          <Checkbox label={<label>{formatMessage(messages.checkoutlistPrecautionsText)}</label>} />
+          <Checkbox 
+            label={<label>{formatMessage(messages.checkoutlistPrecautionsText)}</label>} 
+            checked={value}
+            readOnly={true}
+          />
         </FormField> 
       </MainContainer>
     </div>
@@ -41,11 +40,11 @@ const DateNoteRow = ({intl, data, onChange, options}) => {
 };
 
 // PropTypes
-DateNoteRow.propTypes = {
+InfoAndPrecautionsRowView.propTypes = {
     data: dataShape, 
     options: optionsShape,
     onChange: PropTypes.func.isRequired,
     intl: intlShape.isRequired,
 };
 
-export default CommonRowWrapper(injectIntl(DateNoteRow));
+export default CommonRowWrapper(injectIntl(InfoAndPrecautionsRowView));

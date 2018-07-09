@@ -38,7 +38,9 @@ const SyledList = styled(List)`
   ${NoMarginTop}
 `
 const SwitchedRow = ({row, rowIndex, paragraphIndex}) => {
-  const options = {readonly: false};
+  const options = {
+    editMode: false
+  };
 
   const commonProps = { 
     data: row,

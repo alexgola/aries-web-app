@@ -52,11 +52,7 @@ const messages = defineMessages({
 const DateNoteRow = ({intl, data, onChange, options}) => {
   const {formatMessage} = intl
   const {date, notes} = data
-
-  const handleChange = ({field, value}) => {
-    data[field] = value;
-    onChange(data);
-  }
+  const {editMode} = options
 
   return (
     <div>
@@ -65,16 +61,20 @@ const DateNoteRow = ({intl, data, onChange, options}) => {
           <label>{formatMessage(messages.date)}</label>
           <Input            
             value={getDateByUnixtimestamp(date)}
-            type='text'
-            onChange={(_, {value}) => handleChange({field: 'date', value})} />
+            type='date' 
+            onChange={(_, {value}) => onChange({field: 'date', value, type: 'date'})}
+            readOnly={!editMode}
+          />
         </FormField>
         <Separator/>
         <NotesField>
           <label>{formatMessage(messages.note)}</label>
             <Input 
               value={notes}
-              fluid
-              onChange={(_, {value}) => handleChange({field: 'notes', value})}
+              fluid 
+              type='text' 
+              onChange={(_, {value}) => onChange({field: 'notes', value, type: 'string'})}
+              readOnly={!editMode}
             />
         </NotesField>
       </MainContainer>

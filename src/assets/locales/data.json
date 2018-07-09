@@ -78,6 +78,8 @@
         "DEPARTMENTS": "Reparti",
         "INVALID_MONTH": "Invalid month", 
         "GENERAL_INFO": "Info generali", 
-        "EDIT": "Modifica"
+        "EDIT": "Modifica", 
+        "BACK": "Indietro", 
+        "ASSOCIATES_SYSTEM": "Associa impianto"
     }
 }

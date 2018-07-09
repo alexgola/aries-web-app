@@ -1,8 +1,9 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import {media} from './style-utils'
 
-export const PageContent = styled.div`
-  width: 100%;
+
+export const PageContentCss = css`
+    width: 100%;
 
   ${media.tablet`
     width: 100%;
@@ -11,4 +12,7 @@ export const PageContent = styled.div`
     max-width: 1280px;
     margin: 0 auto;
   `}
+`
+export const PageContent = styled.div`
+  ${PageContentCss}
 `

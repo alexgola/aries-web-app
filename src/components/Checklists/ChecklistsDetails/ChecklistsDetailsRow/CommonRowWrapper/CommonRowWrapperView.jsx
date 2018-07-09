@@ -16,13 +16,28 @@ const EmployeeIndicationsCnt = styled.div`
 `
 
 const CommonRowWrapper = (Component) => ({data, onChange, options, rowIndex, paragraphIndex}) => {
-  const {description, employeeIndications} = data
+  const {description, employeeIndications} = data;
+  const nameValuePairs = data.data.nameValuePairs; 
+  
+  const handleChange = ({field, value, type}) => {
+    let fn = null;
+    switch (type) {
+      case 'float': fn = handleFloatChange;
+    }
+    fn({value, field});
+    onChange({data: {nameValuePairs: data}, rowIndex, paragraphIndex});
+  }
+  
+  const handleFloatChange = ({field, value}) => {
+    data[field] = value;
+  }
+  
 
   return (
     <StyledItem>
       <Description value={description}/>
       <StyledComponentCnt> 
-        <Component onChange={(data) => onChange({data: {nameValuePairs: data}, rowIndex, paragraphIndex})} data={data.data.nameValuePairs} options={options}/> 
+        <Component onChange={handleChange} data={nameValuePairs} options={options}/> 
       </StyledComponentCnt>
       <EmployeeIndicationsCnt>{employeeIndications}</EmployeeIndicationsCnt>
     </StyledItem>

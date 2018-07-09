@@ -17,11 +17,8 @@ const messages = defineMessages({
 const NotesRowView = ({intl, data, onChange, options}) => {
   const {formatMessage} = intl
   const {notes} = data
+  const {editMode} = options
 
-  const handleChange = ({field, value}) => {
-    data[field] = value;
-    onChange(data);
-  }
 
   return (
     <div>
@@ -32,8 +29,8 @@ const NotesRowView = ({intl, data, onChange, options}) => {
             autoHeight 
             value={notes}
             fluid="true"
-            onChange={(_, {value}) => handleChange({field: 'notes', value})}
-            readOnly={options.readonly}
+            onChange={(_, {value}) => onChange({field: 'notes', value, type: 'string'})}
+            readOnly={!editMode}
           />
         </Form.Field>
       </NotesContainer>

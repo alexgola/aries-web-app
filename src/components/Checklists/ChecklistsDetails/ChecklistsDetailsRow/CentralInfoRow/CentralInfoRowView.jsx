@@ -46,11 +46,7 @@ const messages = defineMessages({
 const CentralInfoRow = ({intl, data, onChange, options}) => {
   const {formatMessage} = intl
   const {brand, notes, model, position, masterSlave, slaveId} = data
-
-  const handleChange = ({field, value}) => {
-    data[field] = value;
-    onChange(data);
-  }
+  const {editMode} = options;
 
   return (
     <div>
@@ -59,21 +55,27 @@ const CentralInfoRow = ({intl, data, onChange, options}) => {
           <label>{formatMessage(messages.brand)}</label>
           <Input            
             value={brand}
-            type='text' />
+            type='text'            
+            onChange={(_, {value}) => onChange({field: 'brand', value, type: 'string'})}
+            readOnly={!editMode} />
         </FormField>
         <Separator/>
         <FormField>
           <label>{formatMessage(messages.model)}</label>
           <Input               
             value={model}
-            type='text' />
+            type='text'
+            onChange={(_, {value}) => onChange({field: 'model', value, type: 'string'})}
+            readOnly={!editMode} />
         </FormField>
         <Separator/>
         <FormField>
           <label>{formatMessage(messages.position)}</label>
           <Input               
             value={position}
-            type='text' />
+            type='text'
+            onChange={(_, {value}) => onChange({field: 'position', value, type: 'string'})}
+            readOnly={!editMode} />
         </FormField>
 
         <FormField>
@@ -81,12 +83,16 @@ const CentralInfoRow = ({intl, data, onChange, options}) => {
             label={formatMessage(messages.master)}
             value={MASTER_SLAVE_MASTER_VALUE}
             checked={masterSlave == MASTER_SLAVE_MASTER_VALUE} //eslint-disable-line eqeqeq
+            onChange={(_, {value}) => onChange({field: 'masterSlave', value, type: 'radio'})}
+            readOnly={!editMode} 
           />
 
           <StyledRadio
             label={formatMessage(messages.slave)}
             value={MASTER_SLAVE_SLAVE_VALUE}
             checked={masterSlave == MASTER_SLAVE_SLAVE_VALUE} //eslint-disable-line eqeqeq
+            onChange={(_, {value}) => onChange({field: 'masterSlave', value, type: 'radio'})}
+            readOnly={!editMode} 
           />
         </FormField>
         <Separator/>
@@ -101,8 +107,9 @@ const CentralInfoRow = ({intl, data, onChange, options}) => {
         <label>{formatMessage(messages.note)}</label>
           <Input 
             value={notes}
-            fluid
-            onChange={(_, {value}) => handleChange({field: 'notes', value})}
+            fluid            
+            onChange={(_, {value}) => onChange({field: 'notes', value, type: 'string'})}
+            readOnly={!editMode} />
           />
         </FormField>
       </MainContainer>

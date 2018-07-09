@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
-import {injectIntl, intlShape, defineMessages} from 'react-intl'
+import {injectIntl, intlShape} from 'react-intl'
 import {withRouter} from 'react-router-dom'
 import PrivateAreaRoutes from './PrivateAreaRoutes';
 import Header from '../Header';
@@ -35,6 +35,7 @@ PrivateArea.propTypes = {
     exact: PropTypes.bool.isRequired,
     component: PropTypes.func.isRequired,
   }))).isRequired,
+  intl: intlShape,
 };
 
 

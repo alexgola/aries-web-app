@@ -47,11 +47,7 @@ const messages = defineMessages({
 const CentralInfoRow = ({intl, data, onChange, options}) => {
   const {formatMessage} = intl
   const {brand, notes, model, position, ampere} = data
-
-  const handleChange = ({field, value}) => {
-    data[field] = value;
-    onChange(data);
-  }
+  const {editMode} = options
 
   return (
     <div>
@@ -60,27 +56,39 @@ const CentralInfoRow = ({intl, data, onChange, options}) => {
           <label>{formatMessage(messages.brand)}</label>
           <Input            
             value={brand}
-            type='text' />
+            type='text'
+            onChange={(_, {value}) => onChange({field: 'brand', value, type: 'string'})}
+            readOnly={!editMode}
+          />
         </FormField>
         <Separator/>
         <FormField>
           <label>{formatMessage(messages.model)}</label>
           <Input               
             value={model}
-            type='text' />
+            type='text'
+            onChange={(_, {value}) => onChange({field: 'model', value, type: 'string'})}
+            readOnly={!editMode}
+          />
         </FormField>
         <Separator/>
         <FormField>
           <label>{formatMessage(messages.position)}</label>
           <Input               
             value={position}
-            type='text' />
+            type='text' 
+            onChange={(_, {value}) => onChange({field: 'position', value, type: 'string'})}
+            readOnly={!editMode}
+          />
         </FormField>
         <FormField>
           <label>{formatMessage(messages.ampere)}</label>
           <Input               
             value={ampere}
-            type='text' />
+            type='number'
+            onChange={(_, {value}) => onChange({field: 'ampere', value, type: 'float'})}
+            readOnly={!editMode}
+          />
         </FormField>
         <Separator/>
         <NotesFormField>
@@ -88,7 +96,8 @@ const CentralInfoRow = ({intl, data, onChange, options}) => {
           <Input 
             value={notes}
             fluid
-            onChange={(_, {value}) => handleChange({field: 'notes', value})}
+            onChange={(_, {value}) => onChange({field: 'notes', value, type: 'string'})}
+            readOnly={!editMode}
           />
         </NotesFormField>
       </MainContainer>

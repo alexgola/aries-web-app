@@ -42,11 +42,7 @@ const messages = defineMessages({
 const InstrumMeasuresRow = ({intl, data, onChange, options}) => {
   const {formatMessage} = intl
   const {startVoltage, nextVoltage, restAbsorption, alarmAbsorption, hourAutonomy, notes} = data
-
-  const handleChange = ({field, value}) => {
-    data[field] = value;
-    onChange(data);
-  }
+  const {editMode} = options
 
   return (
     <div>
@@ -55,35 +51,50 @@ const InstrumMeasuresRow = ({intl, data, onChange, options}) => {
           <label>{formatMessage(messages.startVoltage)}</label>
           <Input            
             value={startVoltage}
-            type='number' />
+            type='number' 
+            onChange={(_, {value}) => onChange({field: 'startVoltage', value, type: 'float'})}
+            readOnly={!editMode}
+          /> 
         </FormField>
         <PersistentSeparator/>
         <FormField>
           <label>{formatMessage(messages.nextVoltage)}</label>
           <Input               
             value={nextVoltage}
-            type='number' />
+            type='number'
+            onChange={(_, {value}) => onChange({field: 'nextVoltage', value, type: 'float'})}
+            readOnly={!editMode}
+          /> 
         </FormField>
         <Separator/>
         <FormField>
           <label>{formatMessage(messages.restAbsorption)}</label>
           <Input               
             value={restAbsorption}
-            type='text' />
+            type='number'
+            onChange={(_, {value}) => onChange({field: 'restAbsorption', value, type: 'float'})}
+            readOnly={!editMode}
+          /> 
         </FormField>
         <PersistentSeparator/>
         <FormField>
           <label>{formatMessage(messages.alarmAbsorption)}</label>
           <Input  
             value={alarmAbsorption}
-            type='number' />
+            type='number'
+            onChange={(_, {value}) => onChange({field: 'alarmAbsorption', value, type: 'float'})}
+            readOnly={!editMode}
+          /> 
         </FormField>
         <Separator/>
         <FormField>
           <label>{formatMessage(messages.hourAutonomy)}</label>
           <Input  
             value={hourAutonomy}
-            type='number' />
+            type='number'
+            onChange={(_, {value}) => onChange({field: 'hourAutonomy', value, type: 'float'})}
+            readOnly={!editMode}
+          />
         </FormField>
         <PersistentSeparator/>
         <FormField>
@@ -91,7 +102,8 @@ const InstrumMeasuresRow = ({intl, data, onChange, options}) => {
             <Input 
               value={notes}
               fluid
-              onChange={(_, {value}) => handleChange({field: 'notes', value})}
+              onChange={(_, {value}) => onChange({field: 'notes', value, type: 'string'})}
+              readOnly={!editMode}
             />
         </FormField>
       </MainContainer>

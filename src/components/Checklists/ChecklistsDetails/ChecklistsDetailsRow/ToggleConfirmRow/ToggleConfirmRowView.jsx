@@ -43,36 +43,34 @@ const messages = defineMessages({
 const ToggleConfirmRow = ({intl, data, onChange, options}) => {
   const {formatMessage} = intl
   const {value, notes, quantity, tested} = data
-  const {hasNa, hasQuantity} = options
-
-  const handleChange = ({field, value}) => {
-    data[field] = value;
-    onChange(data);
-  }
+  const {hasNa, hasQuantity, editMode} = options
 
   return (
     <div>
       <Group>
         <StyledRadio
-          positive="true"
+          positive='true'
           label={formatMessage(messages.yes)}
           value={TOGGLE_CONFIRM_YES_VALUE}
           checked={value == TOGGLE_CONFIRM_YES_VALUE} //eslint-disable-line eqeqeq
-          onChange={(_, {value}) => handleChange({field: 'value', value})}
+          onChange={(_, {value}) => onChange({field: 'value', value, type: 'radio'})}
+          readOnly={!editMode}
         />
         <StyledRadio
-          negative="true"
+          negative='false'
           label={formatMessage(messages.no)}
           value={TOGGLE_CONFIRM_NO_VALUE}
           checked={value == TOGGLE_CONFIRM_NO_VALUE} //eslint-disable-line eqeqeq
-          onChange={(_, {value}) => handleChange({field: 'value', value})}
+          onChange={(_, {value}) => onChange({field: 'value', value, type: 'radio'})}
+          readOnly={!editMode}
         />
         {hasNa === true ?         
           <StyledRadio
             label={formatMessage(messages.na)}
             value={TOGGLE_CONFIRM_NA_VALUE}
             checked={value == TOGGLE_CONFIRM_NA_VALUE} //eslint-disable-line eqeqeq
-            onChange={(_, {value}) => handleChange({field: 'value', value})}
+            onChange={(_, {value}) => onChange({field: 'value', value, type: 'radio'})}
+            readOnly={!editMode}
           />
         : null}
         {hasQuantity === true ?         
@@ -81,13 +79,19 @@ const ToggleConfirmRow = ({intl, data, onChange, options}) => {
               <label>{formatMessage(messages.quantity)}</label>
               <Input            
                 value={quantity}
-                type='number' />
+                type='number'
+                onChange={(_, {value}) => onChange({field: 'quantity', value, type: 'integer'})}
+                readOnly={!editMode}
+              />
             </FormField>
             <FormField>
               <label>{formatMessage(messages.tested)}</label>
               <Input               
                 value={tested}
-                type='number' />
+                type='number'
+                onChange={(_, {value}) => onChange({field: 'tested', value, type: 'integer'})}
+                readOnly={!editMode}
+              />
             </FormField>
           </QuantityContainer>
         : null}
@@ -98,7 +102,9 @@ const ToggleConfirmRow = ({intl, data, onChange, options}) => {
           <Input 
             value={notes}
             fluid
-            onChange={(_, {value}) => handleChange({field: 'notes', value})}
+            type='text'
+            onChange={(_, {value}) => onChange({field: 'notes', value, type: 'string'})}
+            readOnly={!editMode}
           />
         </Form.Field>
       </NotesContainer>
