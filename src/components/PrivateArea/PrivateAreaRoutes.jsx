@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import {Switch, Route, Redirect, withRouter} from 'react-router-dom'
 
 class PrivateAreaRoutes extends React.PureComponent {
+  
   render () {
     const {routes, match} = this.props
     const initMatch = match.url === '/' ? '' : match.url;

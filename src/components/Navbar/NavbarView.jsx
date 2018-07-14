@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
 import { Menu } from 'semantic-ui-react'
 import styled from 'styled-components';
 import { BackgroundNavbar } from '../../styles';
@@ -8,7 +8,7 @@ const NavbarConainer = styled.div`
   ${BackgroundNavbar}
 `
 
-export default class NavbarView extends Component {
+export default class NavbarView extends PureComponent {
   state = { activeItem: 'checklist' }
 
   handleItemClick = (e, { name }) => this.setState({ activeItem: name })

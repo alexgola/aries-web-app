@@ -37,9 +37,9 @@ import { NoMarginTop, HeaderH2 } from '../../../../styles';
 const SyledList = styled(List)`
   ${NoMarginTop}
 `
-const SwitchedRow = ({row, rowIndex, paragraphIndex}) => {
+const SwitchedRow = ({row, rowIndex, paragraphIndex, editMode}) => {
   const options = {
-    editMode: false
+    editMode: editMode
   };
 
   const commonProps = { 
@@ -95,24 +95,41 @@ const SwitchedRow = ({row, rowIndex, paragraphIndex}) => {
   }
 };
 
-const ChecklistsDetailsParagraph = ({data, changeIsCollapsedStatus, paragraphIndex}) => {
-  const {rows, order, name, isCollapsed} = data;
-  return (
-    <div>
-      <HeaderH2 
-        collapsable={"true"} 
-        dimension={'h2'} 
-        text={`${order} - ${name}` }
-        onClick={() => changeIsCollapsedStatus({value: !isCollapsed, paragraphIndex})}/>
-      <SyledList 
-        celled
-        isCollapsed={!!isCollapsed}>
-        {rows.map((row, index)=> {
-          return <SwitchedRow paragraphIndex={paragraphIndex} rowIndex={index} key={`checklist_row_${row.paragraphId}_${row.id}`} row={row}/>
-        })}
-      </SyledList>
-    </div>
-  )
+class ChecklistsDetailsParagraph extends React.Component {
+
+  shouldComponentUpdate(nextProps) {
+    const {data, paragraphIndex, editMode} = this.props;
+    const {rows, order, name, isCollapsed} = data;
+    
+    return paragraphIndex !== nextProps.paragraphIndex || 
+      editMode !== nextProps.editMode ||
+      JSON.stringify(rows) !== JSON.stringify(nextProps.data.rows) ||
+      order !== nextProps.data.order ||
+      name !== nextProps.data.name || 
+      isCollapsed !== nextProps.data.isCollapsed;
+  }
+
+  render() {
+    const {data, changeIsCollapsedStatus, paragraphIndex, editMode} = this.props;
+    const {rows, order, name, isCollapsed} = data;
+
+    return (
+      <div>
+        <HeaderH2 
+          collapsable={"true"} 
+          dimension={'h2'} 
+          text={`${order} - ${name}` }
+          onClick={() => changeIsCollapsedStatus({value: !isCollapsed, paragraphIndex})}/>
+        <SyledList 
+          celled
+          isCollapsed={!!isCollapsed}>
+          {rows.map((row, index)=> {
+            return <SwitchedRow editMode={editMode} paragraphIndex={paragraphIndex} rowIndex={index} key={`checklist_row_${row.paragraphId}_${row.id}`} row={row}/>
+          })}
+        </SyledList>
+      </div>
+    )
+  }
 };
 
 // PropTypes

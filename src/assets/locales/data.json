@@ -80,6 +80,11 @@
         "GENERAL_INFO": "Info generali", 
         "EDIT": "Modifica", 
         "BACK": "Indietro", 
-        "ASSOCIATES_SYSTEM": "Associa impianto"
+        "ASSOCIATES_SYSTEM": "Associa impianto", 
+        "SAVE": "Salva",
+        "SAVING_CHECKLIST": "Salvataggio Checklist",
+        "DO_YOU_WANT_SAVE_THE_CHECKLIST": "Sei sicuro di voler salvare le modifiche apportate?",
+        "SYSTEM_CHECKLIST_ASSOCIATION": "Associazione Checklist-Impianto", 
+        "DO_YOU_WANT_CRATE_SYSTEM_CHECKLIST_ASSOCIATION": "Sei sicuro di voler creare un associazione checklist-impianto?"
     }
 }

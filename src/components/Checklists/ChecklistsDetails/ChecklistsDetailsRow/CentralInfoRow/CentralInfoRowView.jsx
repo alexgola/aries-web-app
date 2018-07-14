@@ -109,7 +109,7 @@ const CentralInfoRow = ({intl, data, onChange, options}) => {
             value={notes}
             fluid            
             onChange={(_, {value}) => onChange({field: 'notes', value, type: 'string'})}
-            readOnly={!editMode} />
+            readOnly={!editMode} 
           />
         </FormField>
       </MainContainer>

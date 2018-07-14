@@ -5,8 +5,11 @@ import { injectIntl } from 'react-intl'
 import { LeftButton } from './prop-types'
 import { CenterVertically, navbarGrey, DarkGrey, PageContentCss } from '../../styles'
 import { Button, Icon } from '../UI'
+import ConfirmationModal from '../Modals/ConfirmationModal';
 
-export const createRightButton = ({ref, caption, onClick, isLoading, icon, animated, primary, secondary}) => {
+export const createRightButton = ({ref, caption, onClick, isLoading, icon, 
+    animated, primary, secondary, ButtonWrapper}) => {
+
   return {
     ref,
     caption,
@@ -16,6 +19,7 @@ export const createRightButton = ({ref, caption, onClick, isLoading, icon, anima
     primary,
     animated,
     secondary,
+    ButtonWrapper,
   }
 };
 
@@ -51,11 +55,12 @@ const LeftContainer = styled.div`
   ${CenterVertically}
 `
 
-const TypedButton = ({caption, icon, animated, primary, secondary}) => {
+const TypedButton = ({caption, icon, animated, primary, secondary, 
+  ButtonWrapper, onClick}) => {
 
-  const attr = {}
+  const attr = {};
+
   let isAnimated = false;
-
   if(primary === true) attr.primary = true;
   else if(secondary === true) attr.secondary = true;
   
@@ -64,19 +69,28 @@ const TypedButton = ({caption, icon, animated, primary, secondary}) => {
     attr.animated = animated;
   }
   
+  let MyButton;
   if(!isAnimated){
-    return <Button {...attr}>
+    MyButton = ({wrapperClick}) => <Button {...attr} onClick={() => {
+        if(onClick) onClick();
+        if(wrapperClick) wrapperClick();
+      }}>
       {icon ? <Icon name={icon} /> : null}
       {caption}
     </Button>;
   } else {
-    return <Button {...attr}>
+    MyButton = ({wrapperClick}) => <Button {...attr} onClick={() => {
+        if(onClick) onClick();
+        if(wrapperClick) wrapperClick();
+      }}>
       <Button.Content hidden>{caption}</Button.Content>
       <Button.Content visible>
         <Icon name={icon} />
       </Button.Content>
     </Button>;
   }
+
+  return ButtonWrapper ? <ButtonWrapper button={MyButton}/> : <MyButton />;
 }
 
 class ActionsBar extends React.PureComponent {

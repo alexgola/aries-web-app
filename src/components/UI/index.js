@@ -21,6 +21,7 @@ export * from './Radio'
 export * from './List'
 export * from './Button'
 export * from './Icon'
+export * from './Modal'
 export const SimpleDivider = mySimpleDiveder
 export const Rail = myRail;
 export const Sticky = mySticky;

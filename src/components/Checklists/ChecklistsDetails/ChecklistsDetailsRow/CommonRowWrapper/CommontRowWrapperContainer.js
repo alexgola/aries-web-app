@@ -6,12 +6,12 @@ const mapStateToProps = (state, initialProps) => {
   const { rowIndex, paragraphIndex } = initialProps;
 
   return {
-    data: state.checklists.detail.data.paragraphs[paragraphIndex].rows[rowIndex],
+    item: state.checklists.detail.data.paragraphs[paragraphIndex].rows[rowIndex],
   }
 }
 const mapDispatchToProps = (dispatch) => {
   return {
-    onChange: ({data, paragraphIndex, rowIndex}) => dispatch(checklistDetailUpdateRowData({value: data, paragraphIndex, rowIndex})),
+    onChange: ({data, paragraphIndex, rowIndex}) => dispatch(checklistDetailUpdateRowData({data, paragraphIndex, rowIndex})),
   }
 }
 export default (Component) => connect(mapStateToProps, mapDispatchToProps)(CommonRowWrapperView(Component))

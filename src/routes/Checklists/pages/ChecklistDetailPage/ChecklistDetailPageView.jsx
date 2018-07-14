@@ -6,14 +6,19 @@ import ChecklistsDetailsParagraph from '../../../../components/Checklists/Checkl
 import { PageContent } from '../../../../styles';
 import ChecklistActionsBar from '../../../../components/Checklists/ChecklistsDetails/ChecklistActionsBar';
 
-class ChecklistDetailPageView extends React.PureComponent {
+class ChecklistDetailPageView extends React.Component {
   componentDidMount () {
     const {id} = this.props.match.params
     this.props.getChecklistDetail(id)
   }
+
+  shouldComponentUpdate(nextProps) {
+    return nextProps.detail.isLoading !== this.props.detail.isLoading
+      || nextProps.detail.paragraphsLength !== this.props.detail.paragraphsLength;
+  }
+
   render () {
     const {isLoading, paragraphsLength} = this.props.detail
-    
     if(isLoading) {
       return (
         <Dimmer inverted active={isLoading}>

@@ -94,3 +94,8 @@ export const CenterVertically = css`
   top: 50%;
   transform: translateY(-50%);
 `
+export const CenterVerticallyRelative = css`
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+`

@@ -19,7 +19,8 @@
     "redux-saga": "^0.16.0",
     "semantic-ui-css": "^2.3.1",
     "semantic-ui-react": "^0.80.0",
-    "styled-components": "^3.2.6"
+    "styled-components": "^3.2.6",
+    "when": "^3.7.8"
   },
   "devDependencies": {
     "@storybook/addon-actions": "^3.4.4",

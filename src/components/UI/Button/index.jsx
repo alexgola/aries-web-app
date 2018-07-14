@@ -3,7 +3,7 @@ import {Button as SemanticButton} from 'semantic-ui-react'
 
 const MyButton = ({...rest}) => {
   return (
-    <SemanticButton {...{...rest}} />
+    <SemanticButton {...rest} />
   )
 }
 

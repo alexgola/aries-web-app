@@ -5,7 +5,6 @@ import {checklistDetailParagraphCollapse} from '../../../../routes/Checklists/mo
 const mapStateToProps = (state, initialProps) => {
   const {paragraphIndex} = initialProps;
   const paragraph = state.checklists.detail.data.paragraphs[paragraphIndex];
-
   return {
     data: {
       rows: (paragraph.rows || []).map(row => ({
@@ -17,6 +16,7 @@ const mapStateToProps = (state, initialProps) => {
       name: paragraph.name, 
       isCollapsed: paragraph.isCollapsed,
     },
+    editMode: state.checklists.detail.edit,
   }
 }
 const mapDispatchToProps = (dispatch) => {

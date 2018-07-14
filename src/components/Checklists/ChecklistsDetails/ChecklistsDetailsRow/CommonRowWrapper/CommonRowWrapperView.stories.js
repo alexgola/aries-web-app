@@ -20,5 +20,5 @@ storiesOf('Checklists', module)
             { story() }
         </List>
     ))
-    .addWithJSX('Details Row - Common wrapper', () =>  <Component data={data} />);
+    .addWithJSX('Details Row - Common wrapper', () =>  <Component item={data} />);
 

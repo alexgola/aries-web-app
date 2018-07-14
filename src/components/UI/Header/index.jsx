@@ -7,5 +7,5 @@ const StyledHeader = styled(SemanticHeader)`
 `
 
 export const Header = ({text, dimension, ...rest}) => (
-    <StyledHeader {...rest} as={dimension}>{text}</StyledHeader>
+    <StyledHeader {...rest} as={dimension || null}>{text || null}</StyledHeader>
 )

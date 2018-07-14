@@ -1,10 +1,10 @@
-import { isNaN } from "../validators";
+import { fixIsNaN } from "../validators";
 
 export const stringToFloat = (value) => {
   if(value === '')  return null;
-  const parseFloat = parseFloat(value)
-  if((!isNaN(parseFloat) && typeof parseFloat === 'number')) {
-    return parseFloat;
+  const myFloat = parseFloat(value)
+  if(!fixIsNaN(myFloat)) {
+    return myFloat;
   }
   return null;
 }

@@ -1,5 +1,6 @@
 import { actionTypes } from './ChecklistsActions'
-import createReducer from '../../../store/create-reducers';
+import createReducer from '../../../store/create-reducers'
+import * as R from 'ramda'
 
 const initialState = {
   checklists: {
@@ -11,6 +12,7 @@ const initialState = {
     loading: false,
     error: null,
     data: null,
+    copiedData: null,
     edit: false,
   }
 }
@@ -103,7 +105,7 @@ export default createReducer({ ...initialState }, {
     }
   }, 
   [actionTypes.CHECKLIST_DETAIL_UPDATE_ROW_DATA](state, action){
-    const {value, paragraphIndex, rowIndex} = action.payload;
+    const {data, paragraphIndex, rowIndex} = action.payload;
     return { ...state, 
       detail: {
         ...state.detail, 
@@ -112,10 +114,19 @@ export default createReducer({ ...initialState }, {
           paragraphs: state.detail.data.paragraphs.map((el, index) => index === paragraphIndex 
             ? {
               ...el,
-              rows: el.rows.map((row, rIndex) => rIndex === rowIndex ? {...row, data: value} : row)
+              rows: el.rows.map((row, rIndex) => rIndex === rowIndex ? {...row, data} : row)
             } 
             : el)
         }
+      }
+    }
+  },
+  [actionTypes.CHECKLIST_DETAIL_START_EDIT_DATA](state){
+    return { ...state, 
+      detail: {
+        ...state.detail, 
+        edit: true,
+        copiedData: R.clone(state.detail.data),
       }
     }
   },
