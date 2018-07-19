@@ -7,7 +7,7 @@ module.exports.init = function(axios) {
     })
   }
   const getById = ({includes, id}) => {
-    return axios.get(`checklist`, {
+    return axios.get('checklist', {
       params: {
         includes,
         id
@@ -15,8 +15,21 @@ module.exports.init = function(axios) {
     })
   }
 
+
+
+  const update = ({id, checklist}) => {
+    return axios.put(`checklist/${id}`, checklist)
+  }
+
+
+  const createSystemLink = ({id}) => {
+    return axios.post('checklist/model/createForSystem', {checklistId: id})
+  }
+
   return {
     get,
     getById,
+    update, 
+    createSystemLink,
   }
 }

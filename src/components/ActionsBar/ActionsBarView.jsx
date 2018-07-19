@@ -5,7 +5,7 @@ import { injectIntl } from 'react-intl'
 import { LeftButton } from './prop-types'
 import { CenterVertically, navbarGrey, DarkGrey, PageContentCss } from '../../styles'
 import { Button, Icon } from '../UI'
-import ConfirmationModal from '../Modals/ConfirmationModal';
+import { withRouter } from 'react-router-dom'
 
 export const createRightButton = ({ref, caption, onClick, isLoading, icon, 
     animated, primary, secondary, ButtonWrapper}) => {
@@ -116,15 +116,18 @@ class ActionsBar extends React.PureComponent {
   }
 
   render() {
-    const { rightButtons, intl: { formatMessage } } = this.props;
+    const { rightButtons, intl: { formatMessage }, history, buttonBackCheck} = this.props;
     return (
       <MainContainer innerRef={this.mainRef}>
         <ButtonContainer>
           <LeftContainer>
-          <Button icon labelPosition='left'>
-            {formatMessage({id: 'BACK'})}
-            <Icon name="left arrow" />
-          </Button>
+            <Button 
+              icon 
+              labelPosition='left'
+              onClick={() => history.goBack()}>
+              {formatMessage({id: 'BACK'})}
+              <Icon name="left arrow" />
+            </Button>
           </LeftContainer>
           <RightContainer>
             {rightButtons.map((button) => {
@@ -142,4 +145,4 @@ ActionsBar.propTypes = {
   rightButtons: PropTypes.arrayOf(LeftButton).isRequired,
 }
 
-export default injectIntl(ActionsBar)
+export default withRouter(injectIntl(ActionsBar))

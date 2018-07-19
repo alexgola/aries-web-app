@@ -2,7 +2,8 @@ import axios from 'axios'
 import {authenticate, refreshAuthentication} from './authenticator'
 import checklists from './checklists'
 import users from './users'
-import { apiObjToJsonObj } from '../../utils/obj-mapper';
+import { isObject } from '../../utils/is-object';
+import { apiObjToJsonObj, jsonObjToApiObj } from '../../utils/obj-mapper';
 import { getLocalStorageItem } from '../../utils/local-storage';
 
 export const ARIES_API_TOKEN = "ARIES_API_TOKEN"
@@ -18,6 +19,9 @@ instance.interceptors.request.use(function (req) {
   if (tokenData === null) tokenData = getLocalStorageItem(ARIES_API_TOKEN);
   if (tokenData) {
     req.headers['Authorization'] = `Bearer ${tokenData.access_token}`;
+  }
+  if(isObject(req.data)) {
+    req.data = jsonObjToApiObj(req.data, ['nameValuePairs']);
   }
   return req;
 }, function (error) {

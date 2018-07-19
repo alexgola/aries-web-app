@@ -130,4 +130,27 @@ export default createReducer({ ...initialState }, {
       }
     }
   },
+  [actionTypes.CHECKLIST_DETAIL_SYSTEM_ASSOCIATION_SUCCESS](state){
+    const newSystem = state.detail.data.system != null 
+      ? {...state.detail.data.system, checklistId: state.detail.data.system.checklistId}
+      : state.detail.data.system;
+    return { ...state, 
+      detail: {
+        ...state.detail, 
+        data: {
+          ...state.detail.data, 
+          system: newSystem,
+        }
+      }
+    }
+  },
+  [actionTypes.CHECKLIST_DETAIL_REMOTE_UPDATE_SUCCESS](state){
+    return { ...state, 
+      detail: {
+        ...state.detail, 
+        edit: false,
+        copiedData: null,
+      }
+    }
+  },
 });
