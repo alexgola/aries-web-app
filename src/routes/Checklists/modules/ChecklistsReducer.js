@@ -153,4 +153,14 @@ export default createReducer({ ...initialState }, {
       }
     }
   },
+  [actionTypes.CHECKLIST_DETAIL_CANCEL_EDIT_NO_UPDATE](state){
+    return { ...state, 
+      detail: {
+        ...state.detail, 
+        edit: false,
+        copiedData: null,
+        data: R.clone(state.detail.copiedData),
+      }
+    }
+  },
 });

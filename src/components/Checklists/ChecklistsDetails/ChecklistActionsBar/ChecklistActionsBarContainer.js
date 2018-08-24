@@ -4,6 +4,7 @@ import {
   checklistDetailStartEditData, 
   createSystemChecklistAssoc, 
   remoteUpdate, 
+  checklistDetailCancelEdit,
 } from '../../../../routes/Checklists/modules/ChecklistsActions'
 
 const mapStateToProps = (state) => {
@@ -18,6 +19,7 @@ const mapDispatchToProps = (dispatch) => {
     startEditing: () => dispatch(checklistDetailStartEditData()),
     createSystemChecklistAssoc: (checklistId) => dispatch(createSystemChecklistAssoc.request({id: checklistId})),
     updateChecklist: (id, checklist) => dispatch(remoteUpdate.request({id, checklist})),
+    cancelUpdate: _ => dispatch(checklistDetailCancelEdit())
   }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(ChecklistActionsBarView)

@@ -8,7 +8,7 @@ import ConfirmationModal from '../../../Modals/ConfirmationModal';
 
 
 const ChecklistActionsBarView = ({intl, startEditing, editMode, hasChecklistLink, 
-  checklist, createSystemChecklistAssoc, updateChecklist}) => {
+  checklist, createSystemChecklistAssoc, updateChecklist, cancelUpdate}) => {
 
   const {formatMessage} = intl;
   const rightButtons = [];
@@ -23,7 +23,7 @@ const ChecklistActionsBarView = ({intl, startEditing, editMode, hasChecklistLink
         MyButton={button}
         title={formatMessage({id: 'SAVING_CHECKLIST'})}
         text={formatMessage({id: 'DO_YOU_WANT_SAVE_THE_CHECKLIST'})}
-        onClick={(value) => value && updateChecklist(checklist.id, checklist)}
+        onClick={(value) => value === true ? updateChecklist(checklist.id, checklist) : cancelUpdate(checklist.id, checklist)}
       />, 
     }));
   } else {

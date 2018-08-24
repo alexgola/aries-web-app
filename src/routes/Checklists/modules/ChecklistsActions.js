@@ -12,6 +12,7 @@ export const actionTypes = {
   CHECKLIST_DETAIL_GENERAL_INFO_COLLAPSE: 'CHECKLIST_DETAIL_GENERAL_INFO_COLLAPSE',
   CHECKLIST_DETAIL_UPDATE_ROW_DATA: 'CHECKLIST_DETAIL_UPDATE_ROW_DATA',
   CHECKLIST_DETAIL_START_EDIT_DATA: 'CHECKLIST_DETAIL_START_EDIT_DATA',
+  CHECKLIST_DETAIL_CANCEL_EDIT_NO_UPDATE: 'CHECKLIST_DETAIL_CANCEL_EDIT_NO_UPDATE',
 }
 
 
@@ -27,3 +28,4 @@ export const checklistDetailParagraphCollapse = ({value, paragraphIndex}) => ({t
 export const checklistDetailGeneralInfoCollapse = ({value}) => ({type: 'CHECKLIST_DETAIL_GENERAL_INFO_COLLAPSE', payload: {value}})
 export const checklistDetailUpdateRowData = ({data, paragraphIndex, rowIndex}) => ({ type: 'CHECKLIST_DETAIL_UPDATE_ROW_DATA', payload: {data, paragraphIndex, rowIndex }})
 export const checklistDetailStartEditData = () => ({ type: 'CHECKLIST_DETAIL_START_EDIT_DATA' })
+export const checklistDetailCancelEdit = () => ({ type: actionTypes.CHECKLIST_DETAIL_CANCEL_EDIT_NO_UPDATE })
