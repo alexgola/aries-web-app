@@ -1,9 +1,9 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import {List} from '../../../../UI'
-import Description from '../CommonDescription'
-import styled from 'styled-components'
-import { CardPadding } from '../../../../../styles'
+import React from 'react';
+import PropTypes from 'prop-types';
+import {List} from '../../../../UI';
+import Description from '../CommonDescription';
+import styled from 'styled-components';
+import { CardPadding } from '../../../../../styles';
 import { stringToFloat } from '../../../../../utils/string-to-float';
 import { stringToInt } from '../../../../../utils/string-to-int';
 
@@ -24,11 +24,24 @@ const CommonRowWrapper = (Component) => ({item, onChange, options, rowIndex, par
   const handleChange = ({field, value, type}) => {
     let fn = null;
     switch (type) {
-      case 'float': fn = handleFloatChange;
-      case 'string': fn = handleStringChange;
-      case 'radio': fn = handleRadioChange;
-      case 'integer': fn = handleIntegerChange;
-      case 'boolean': fn = handleBooleanChange;
+      case 'float':
+        fn = handleFloatChange;
+        break;
+      case 'string':
+        fn = handleStringChange;
+        break;
+      case 'radio':
+        fn = handleRadioChange;
+        break;
+      case 'integer':
+        fn = handleIntegerChange;
+        break;
+      case 'boolean':
+        fn = handleBooleanChange;
+        break;
+      default:
+        fn = handleStringChange;
+        break;
     }
     fn({value, field});
     const data = {nameValuePairs}

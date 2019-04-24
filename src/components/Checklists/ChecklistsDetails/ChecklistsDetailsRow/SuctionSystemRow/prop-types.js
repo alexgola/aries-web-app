@@ -1,12 +1,15 @@
 import PropTypes from 'prop-types'
 
 export const dataShape = PropTypes.shape({
-    suctionSystemType: PropTypes.number.isRequired,
-    sensorNumber: PropTypes.string.isRequired,
-    brand: PropTypes.string.isRequired,
-    model: PropTypes.string.isRequired,
-    position: PropTypes.string.isRequired,
-    notes: PropTypes.string.isRequired, 
+    suctionSystemType: PropTypes.oneOfType([
+        PropTypes.string,
+        PropTypes.number
+    ]),
+    sensorNumber: PropTypes.string,
+    brand: PropTypes.string,
+    model: PropTypes.string,
+    position: PropTypes.string,
+    notes: PropTypes.string, 
 });
 
 export const optionsShape = PropTypes.shape({

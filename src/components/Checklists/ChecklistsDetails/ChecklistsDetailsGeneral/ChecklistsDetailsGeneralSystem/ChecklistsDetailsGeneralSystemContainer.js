@@ -13,7 +13,8 @@ const mapStateToProps = (state) => {
       visitNumber: data.visitNumber, 
       periodicCheck: data.periodicCheck, 
       systemDepartments: data.systemDepartments,
-    }
+    },
+    editMode: state.checklists.detail.edit,
   }
 }
 

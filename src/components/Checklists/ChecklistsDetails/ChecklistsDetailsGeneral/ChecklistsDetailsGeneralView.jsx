@@ -1,55 +1,31 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import styled from 'styled-components'
-import {injectIntl, defineMessages} from 'react-intl'
 import ChecklistsDetailsGeneralCustomerView from './ChecklistsDetailsGeneralCustomer'
 import ChecklistsDetailsGeneralSystemView from './ChecklistsDetailsGeneralSystem'
-import { HeaderH2 } from '../../../../styles';
+import { LightGrey } from '../../../../styles';
 
-const messages = defineMessages({
-  generalInfo: { id: 'GENERAL_INFO' },
-})
 
 const MainContainer = styled.div`
-
-`
-
-const Content = styled.div`
-  transition: height 1s ease;
-  overflow: hidden;
+  border-top: 1px solid ${LightGrey};
+  border-left: 1px solid ${LightGrey};
+  margin-left: -1px;
 `;
 
-const CollapsedContent = styled(Content)`
-  height: 0px;
-`
-
-const ExpandedContent = styled(Content)`
-  height: auto;
-`
-
-const ChecklistsDetailsGeneral = ({intl, isGeneralInfoCollapsed, options, changeIsCollapsedStatus}) => {
-  const {formatMessage} = intl
-  const MyContent = isGeneralInfoCollapsed ? CollapsedContent : ExpandedContent
+const Content = styled.div`
+  overflow: hidden;
+`;
+const ChecklistsDetailsGeneral = () => {
   return (
     <MainContainer>
-      <HeaderH2 
-        collapsable={"true"}  
-        dimension={'h2'} 
-        text={`${formatMessage(messages.generalInfo)}` }
-        onClick={() => changeIsCollapsedStatus({value: !isGeneralInfoCollapsed})}/>
-      <MyContent>
-        <ChecklistsDetailsGeneralCustomerView options={options}/>
-        <ChecklistsDetailsGeneralSystemView options={options}/>
-      </MyContent>
+      <Content>
+        <ChecklistsDetailsGeneralCustomerView />
+        <ChecklistsDetailsGeneralSystemView />
+      </Content>
     </MainContainer>
   )
 };
 
 // PropTypes
-ChecklistsDetailsGeneral.propTypes = {
-  isGeneralInfoCollapsed: PropTypes.bool.isRequired,
-  changeIsCollapsedStatus: PropTypes.func.isRequired, 
-  intl: PropTypes.object.isRequired
-};
+ChecklistsDetailsGeneral.propTypes = { };
 
-export default injectIntl(ChecklistsDetailsGeneral);
+export default ChecklistsDetailsGeneral;

@@ -7,7 +7,8 @@ const mapStateToProps = (state) => {
   return {
     detail: {
       isLoading: !!(state.checklists.detail.loading || !data),
-      paragraphsLength: (data ? data.paragraphs : []).length
+      activeParagraphIndex: (data || {}).activeParagraphIndex,
+      isGeneralInfoActive: (data || {}).isGeneralInfoActive,
     }
   }
 }

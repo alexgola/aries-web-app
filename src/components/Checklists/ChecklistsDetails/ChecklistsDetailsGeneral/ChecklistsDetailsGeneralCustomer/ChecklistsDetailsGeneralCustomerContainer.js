@@ -11,7 +11,8 @@ const mapStateToProps = (state) => {
       customerCity: data.customerCity,
       responsableName: data.responsableName,
       responsableJob: data.responsableJob,
-    }
+    },
+    editMode: state.checklists.detail.edit,
   }
 }
 export default connect(mapStateToProps)(ChecklistsDetailsGeneralCustomerView)

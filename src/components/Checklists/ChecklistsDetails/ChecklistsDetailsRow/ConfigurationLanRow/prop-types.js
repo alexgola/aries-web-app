@@ -1,23 +1,23 @@
 import PropTypes from 'prop-types'
 
 export const dataShape = PropTypes.shape({
-    serialNumber: PropTypes.string.isRequired,
-    internalIp: PropTypes.string.isRequired,
-    externalIp: PropTypes.string.isRequired,
-    ports: PropTypes.string.isRequired,
-    username: PropTypes.string.isRequired,
-    password: PropTypes.string.isRequired,
-    peerToPeer: PropTypes.bool.isRequired,
-    peerToPeerNotes: PropTypes.string.isRequired,
+    serialNumber: PropTypes.string,
+    internalIp: PropTypes.string,
+    externalIp: PropTypes.string,
+    ports: PropTypes.string,
+    username: PropTypes.string,
+    password: PropTypes.string,
+    peerToPeer: PropTypes.bool,
+    peerToPeerNotes: PropTypes.string,
     snmpVersion: PropTypes.oneOfType([
         PropTypes.string,
         PropTypes.number
-    ]).isRequired,
-    ping: PropTypes.string.isRequired,
-    ddnsServer: PropTypes.string.isRequired,
-    ddnsUsername: PropTypes.string.isRequired,
-    ddnsPassword: PropTypes.string.isRequired,
-    notes: PropTypes.string.isRequired,
+    ]),
+    ping: PropTypes.string,
+    ddnsServer: PropTypes.string,
+    ddnsUsername: PropTypes.string,
+    ddnsPassword: PropTypes.string,
+    notes: PropTypes.string,
 });
 
 export const optionsShape = PropTypes.shape({

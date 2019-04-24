@@ -12,7 +12,15 @@ export const PageContentCss = css`
     max-width: 1280px;
     margin: 0 auto;
   `}
-`
+`;
+
 export const PageContent = styled.div`
   ${PageContentCss}
-`
+`;
+
+export const FullPageContent = styled.div`
+  ${PageContentCss}
+  ${media.desktop`
+    max-width: initial;
+  `}
+`;

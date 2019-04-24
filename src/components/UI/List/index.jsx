@@ -13,14 +13,10 @@ const StyledList = styled(SemanticList)`
 
 class MyList extends React.PureComponent {
 
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     const {isCollapsed, ...rest} = this.props;
     return (<StyledList 
-      collapsed={isCollapsed.toString()}
+      collapsed={(!!isCollapsed).toString()}
       {...rest} />)
   }
 };

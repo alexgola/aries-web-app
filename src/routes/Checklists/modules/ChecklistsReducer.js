@@ -57,8 +57,8 @@ export default createReducer({ ...initialState }, {
   [actionTypes.CHECKLIST_DETAIL_SUCCESS](state, action){
     const checklist = action.payload.list && action.payload.list[0];
     if(checklist) {
-      checklist.isGeneralInfoCollapsed = true
-      checklist.paragraphs = checklist.paragraphs.map(paragraph => ({...paragraph, isCollapsed: true}))
+      checklist.isGeneralInfoActive = true;
+      checklist.activeParagraphIndex = null;
     }
 
     return { ...state, 
@@ -80,26 +80,27 @@ export default createReducer({ ...initialState }, {
       }
     }
   },
-  [actionTypes.CHECKLIST_DETAIL_PARAGRAPH_COLLAPSE](state, action){
-    const {value, paragraphIndex} = action.payload;
+  [actionTypes.CHECKLIST_DETAIL_PARAGRAPH_ACTIVE](state, action){
+    const { paragraphIndex } = action.payload;
     return { ...state, 
       detail: {
         ...state.detail, 
         data: {
-          ...state.detail.data, 
-          paragraphs: state.detail.data.paragraphs.map((el, index) => index === paragraphIndex ? {...el, isCollapsed: value} : el)
+          ...state.detail.data,
+          isGeneralInfoActive: false,
+          activeParagraphIndex: paragraphIndex,
         }
       }
     }
   },  
-  [actionTypes.CHECKLIST_DETAIL_GENERAL_INFO_COLLAPSE](state, action){
-    const {value} = action.payload;
+  [actionTypes.CHECKLIST_DETAIL_GENERAL_INFO_ACTIVE](state){
     return { ...state, 
       detail: {
         ...state.detail, 
         data: {
           ...state.detail.data, 
-          isGeneralInfoCollapsed: value,
+          isGeneralInfoActive: true,
+          activeParagraphIndex: null,
         }
       }
     }

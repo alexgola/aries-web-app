@@ -47,4 +47,5 @@ InfoAndPrecautionsRowView.propTypes = {
     intl: intlShape.isRequired,
 };
 
+
 export default CommonRowWrapper(injectIntl(InfoAndPrecautionsRowView));

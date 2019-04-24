@@ -1,12 +1,11 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import styled from 'styled-components'
-import {injectIntl, intlShape, defineMessages} from 'react-intl'
-import Input from '../../../../UI/Input'
-import {Form} from '../../../../UI'
+import React from 'react';
+import PropTypes from 'prop-types';
+import styled from 'styled-components';
+import {injectIntl, intlShape, defineMessages} from 'react-intl';
+import { Input, Form } from '../../../../UI';
 import CommonRowWrapper from '../CommonRowWrapper';
-import {dataShape, optionsShape} from './prop-types'
-import {media} from '../../../../../styles'
+import {dataShape, optionsShape} from './prop-types';
+import { media } from '../../../../../styles';
 import { getDateByUnixtimestamp } from '../../../../../utils/datetime-utils';
 
 

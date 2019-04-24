@@ -66,9 +66,9 @@ const OnlyTabletSeparator = styled(DesktopSeparator)`
 const FormWrapper = FormCard
 
 
-const ChecklistsDetailsGeneralSystem = ({data, intl, options}) => {
-  const {formatMessage} = intl
-  const readonly = (options && options.readonly) || false
+const ChecklistsDetailsGeneralSystem = ({data, intl, editMode}) => {
+  const {formatMessage} = intl;
+  const readonly = !editMode;
   const {
     systemId,
     description, 
@@ -94,42 +94,48 @@ const ChecklistsDetailsGeneralSystem = ({data, intl, options}) => {
         <TabletSeparator/>
         <FormField>
           <label>{formatMessage(messages.central)}</label>
-          <Input               
+          <Input  
+            readOnly={readonly}                
             value={systemCentral || ''}
             type='text' />
         </FormField>       
         <TabletSeparator/>
         <FormField>
           <label>{formatMessage(messages.installedOn)}</label>
-          <Input               
+          <Input     
+            readOnly={readonly}             
             value={systemInstalledDate ? AriesDate({unixTimestamp: systemInstalledDate}) : ''}
             type='text' />
         </FormField>  
         <DesktopSeparator/>      
         <FormField>
           <label>{formatMessage(messages.installedIn)}</label>
-          <Input               
+          <Input   
+            readOnly={readonly}               
             value={systemInstalledPlace || ''}
             type='text' />
         </FormField>       
         <TabletSeparator/>
         <FormField>
           <label>{formatMessage(messages.visitNumber)}</label>
-          <Input               
+          <Input    
+            readOnly={readonly}              
             value={visitNumber || ''}
             type='text' />
         </FormField>
         <OnlyTabletSeparator/>
         <FormField>
           <label>{formatMessage(messages.periodicCheck)}</label>
-          <Input               
+          <Input   
+            readOnly={readonly}               
             value={periodicCheck || ''}
             type='text' />
         </FormField>
         <DesktopSeparator/>  
         <FormField>
           <label>{formatMessage(messages.departments)}</label>
-          <Input               
+          <Input    
+            readOnly={readonly}              
             value={systemDepartments || ''}
             type='text' />
         </FormField>
@@ -151,6 +157,7 @@ ChecklistsDetailsGeneralSystem.propTypes = {
     systemDepartments: PropTypes.string,
   }),
   intl: PropTypes.object.isRequired,
+  editMode: PropTypes.bool,
 };
 
 export default injectIntl(ChecklistsDetailsGeneralSystem);

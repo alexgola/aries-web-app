@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import { injectIntl } from 'react-intl'
 import { LeftButton } from './prop-types'
-import { CenterVertically, navbarGrey, DarkGrey, PageContentCss } from '../../styles'
+import { CenterVertically, navbarGrey, DarkGrey, FullPageContent } from '../../styles'
 import { Button, Icon } from '../UI'
 import { withRouter } from 'react-router-dom'
 
@@ -42,7 +42,7 @@ const MainContainer = styled.div`
 `
 const ButtonContainer = styled.div`
   position: relative;
-  ${PageContentCss};
+  ${FullPageContent};
   height: 50px;
 `
 
@@ -52,6 +52,7 @@ const RightContainer = styled.div`
 `
 const LeftContainer = styled.div`
   left: 0;
+  margin-left: 5px;
   ${CenterVertically}
 `
 
@@ -116,7 +117,7 @@ class ActionsBar extends React.PureComponent {
   }
 
   render() {
-    const { rightButtons, intl: { formatMessage }, history, buttonBackCheck} = this.props;
+    const { rightButtons, intl: { formatMessage }, history } = this.props;
     return (
       <MainContainer innerRef={this.mainRef}>
         <ButtonContainer>

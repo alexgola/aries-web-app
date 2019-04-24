@@ -9,5 +9,6 @@ module.exports.init = function(axios) {
 
   return {
     getMe,
+    logout,
   }
 }

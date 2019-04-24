@@ -1,2 +1,2 @@
-import DateNoteRowView from '../DateNoteRow'
-export default DateNoteRowView
+import DateNoteRowView from './DateNoteRowView';
+export default DateNoteRowView;

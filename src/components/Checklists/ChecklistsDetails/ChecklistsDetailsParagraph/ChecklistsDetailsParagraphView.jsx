@@ -32,10 +32,13 @@ import {
 } from '../ChecklistsDetailsRow';
 import {List} from '../../../UI';
 import styled from 'styled-components';
-import { NoMarginTop, HeaderH2 } from '../../../../styles';
+import { NoMarginTop, LightGrey } from '../../../../styles';
 
 const SyledList = styled(List)`
   ${NoMarginTop}
+  border-top: 1px solid ${LightGrey};
+  border-left: 1px solid ${LightGrey};
+  margin-left: -1px;
 `
 const SwitchedRow = ({row, rowIndex, paragraphIndex, editMode}) => {
   const options = {
@@ -98,31 +101,22 @@ const SwitchedRow = ({row, rowIndex, paragraphIndex, editMode}) => {
 class ChecklistsDetailsParagraph extends React.Component {
 
   shouldComponentUpdate(nextProps) {
-    const {data, paragraphIndex, editMode} = this.props;
-    const {rows, order, name, isCollapsed} = data;
+    const { data, paragraphIndex, editMode } = this.props;
+    const { rows } = data;
     
     return paragraphIndex !== nextProps.paragraphIndex || 
       editMode !== nextProps.editMode ||
-      JSON.stringify(rows) !== JSON.stringify(nextProps.data.rows) ||
-      order !== nextProps.data.order ||
-      name !== nextProps.data.name || 
-      isCollapsed !== nextProps.data.isCollapsed;
+      JSON.stringify(rows) !== JSON.stringify(nextProps.data.rows);
   }
 
   render() {
-    const {data, changeIsCollapsedStatus, paragraphIndex, editMode} = this.props;
-    const {rows, order, name, isCollapsed} = data;
+    const {data, paragraphIndex, editMode} = this.props;
+    const {rows} = data;
 
     return (
       <div>
-        <HeaderH2 
-          collapsable={"true"} 
-          dimension={'h2'} 
-          text={`${order} - ${name}` }
-          onClick={() => changeIsCollapsedStatus({value: !isCollapsed, paragraphIndex})}/>
         <SyledList 
-          celled
-          isCollapsed={!!isCollapsed}>
+          celled>
           {rows.map((row, index)=> {
             return <SwitchedRow editMode={editMode} paragraphIndex={paragraphIndex} rowIndex={index} key={`checklist_row_${row.paragraphId}_${row.id}`} row={row}/>
           })}

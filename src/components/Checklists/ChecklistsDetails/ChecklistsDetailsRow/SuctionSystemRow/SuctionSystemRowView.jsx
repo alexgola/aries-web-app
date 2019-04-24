@@ -57,9 +57,10 @@ const messages = defineMessages({
 })
 
 const SuctionSystemRow = ({intl, data, onChange, options}) => {
-  const {formatMessage} = intl
-  const {suctionSystemType, sensorNumber, brand, model, position, notes} = data
-  const {editMode} = options
+  const {formatMessage} = intl;
+  const {suctionSystemType, sensorNumber, brand, model, position, notes} = data;
+  const {editMode} = options;
+  const formattedSuctionSystemType = (suctionSystemType && parseInt(suctionSystemType, 0)) || 0;
 
   return (
     <div>
@@ -68,7 +69,7 @@ const SuctionSystemRow = ({intl, data, onChange, options}) => {
           <StyledRadio
             label={formatMessage(messages.normal)}
             value={SUCTION_SYSTEM_TYPE_NORMAL}
-            checked={suctionSystemType == SUCTION_SYSTEM_TYPE_NORMAL} //eslint-disable-line eqeqeq
+            checked={formattedSuctionSystemType == SUCTION_SYSTEM_TYPE_NORMAL} //eslint-disable-line eqeqeq
             onChange={(_, {value}) => onChange({field: 'suctionSystemType', value, type: 'radio'})}
             readOnly={!editMode}
           />
@@ -76,7 +77,7 @@ const SuctionSystemRow = ({intl, data, onChange, options}) => {
           <StyledRadio
             label={formatMessage(messages.highSensitivity)}
             value={SUCTION_SYSTEM_TYPE_HIGH_SENSITIVITY}
-            checked={suctionSystemType == SUCTION_SYSTEM_TYPE_HIGH_SENSITIVITY} //eslint-disable-line eqeqeq
+            checked={formattedSuctionSystemType == SUCTION_SYSTEM_TYPE_HIGH_SENSITIVITY} //eslint-disable-line eqeqeq
             onChange={(_, {value}) => onChange({field: 'suctionSystemType', value, type: 'radio'})}
             readOnly={!editMode}
           />
@@ -84,7 +85,7 @@ const SuctionSystemRow = ({intl, data, onChange, options}) => {
           <StyledRadio
             label={formatMessage(messages.laser)}
             value={SUCTION_SYSTEM_TYPE_LASER}
-            checked={suctionSystemType == SUCTION_SYSTEM_TYPE_LASER} //eslint-disable-line eqeqeq
+            checked={formattedSuctionSystemType == SUCTION_SYSTEM_TYPE_LASER} //eslint-disable-line eqeqeq
             onChange={(_, {value}) => onChange({field: 'suctionSystemType', value, type: 'radio'})}
             readOnly={!editMode}
           />

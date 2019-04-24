@@ -1,8 +1,7 @@
-import PropTypes from 'prop-types'
+import PropTypes from './node_modules/prop-types'
 
 export const dataShape = PropTypes.shape({
-    value: PropTypes.bool.isRequired,
-    notes: PropTypes.string, 
+  rows: PropTypes.array.isRequired,
 });
 
 export const optionsShape = PropTypes.shape({

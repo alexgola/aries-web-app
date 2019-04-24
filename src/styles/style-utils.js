@@ -1,6 +1,6 @@
 import styled, { css } from "styled-components";
 import { Header, Form } from "../components/UI";
-import {LightBlue, DarkGrey, CollapsedGrey} from "./colors"
+import {LightBlue, DarkGrey, CollapsedGrey, VeryLightGrey} from "./colors"
 
 export const lightGrey = '#BCBDC1';
 export const navbarGrey = '#FAFAFA';
@@ -31,7 +31,9 @@ export const BackgroundDarkGrey = css`
 export const BackgroundLightGrey = css`
   background-color: ${lightGrey};
 `
-
+export const BackgroundVeryLightGrey = css`
+  background-color: ${VeryLightGrey};
+`
 export const BackgroundNavbar = css`
   background-color: ${navbarGrey};
 `
@@ -83,6 +85,7 @@ export const HeaderH2 = styled(Header)`
   ${HeaderFontHeight}
   padding-top: 18px!important;
   padding-bottom: 18px!important;
+  ${NoMarginTop};
 
   &:hover{
     ${BackgroundDarkGrey}

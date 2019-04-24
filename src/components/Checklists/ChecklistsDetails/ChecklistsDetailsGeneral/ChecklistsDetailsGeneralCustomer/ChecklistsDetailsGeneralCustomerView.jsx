@@ -49,10 +49,10 @@ const TabletSeparator = styled(DesktopSeparator)`
 
 const FormWrapper = FormCard;
 
-const ChecklistsDetailsGeneralCustomer = ({data, intl, options}) => {
+const ChecklistsDetailsGeneralCustomer = ({data, intl, editMode}) => {
 
-  const {formatMessage} = intl
-  const readonly = (options && options.readonly) || false
+  const {formatMessage} = intl;
+  const readonly = !editMode;
   const {
     responsableJob, 
     customerName, 
@@ -76,28 +76,32 @@ const ChecklistsDetailsGeneralCustomer = ({data, intl, options}) => {
         <TabletSeparator/>
         <FormField>
           <label>{formatMessage(messages.customerAddress)}</label>
-          <Input               
+          <Input    
+            readOnly={readonly}             
             value={customerAddress}
             type='text' />
         </FormField>       
         <TabletSeparator/>
         <FormField>
           <label>{formatMessage(messages.customerCity)}</label>
-          <Input               
+          <Input
+            readOnly={readonly}                 
             value={customerCity}
             type='text' />
         </FormField>   
         <DesktopSeparator/>     
         <FormField>
           <label>{formatMessage(messages.responsible)}</label>
-          <Input               
+          <Input 
+            readOnly={readonly}                
             value={responsableName || ''}
             type='text' />
         </FormField>       
         <TabletSeparator/>
         <FormField>
           <label>{formatMessage(messages.task)}</label>
-          <Input               
+          <Input
+            readOnly={readonly}                 
             value={responsableJob || ''}
             type='text' />
         </FormField>
@@ -116,7 +120,8 @@ ChecklistsDetailsGeneralCustomer.propTypes = {
     customerCity: PropTypes.string.isRequired,
     responsableName: PropTypes.string,
     customerId: PropTypes.number.isRequired,
-  })
+  }),
+  editMode: PropTypes.bool,
 };
 
 export default injectIntl(ChecklistsDetailsGeneralCustomer);

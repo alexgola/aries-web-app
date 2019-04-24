@@ -2,11 +2,11 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import {Header} from '../../../../UI'
-import {BackgroundLightGrey, ColorDarkGrey, HeaderFontHeight, CardPadding} from '../../../../../styles'
+import {BackgroundVeryLightGrey, ColorDarkGrey, HeaderFontHeight, CardPadding} from '../../../../../styles'
 
 const Container = styled.div`
   width: 100%;
-  ${BackgroundLightGrey}
+  ${BackgroundVeryLightGrey}
   ${CardPadding}
 
 `
